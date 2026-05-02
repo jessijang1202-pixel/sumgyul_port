@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif+KR:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-deep: #020617;
+  --color-brand-blue: #1e3a8a;
+  --color-brand-purple: #7c3aed;
+  --color-brand-accent: #a78bfa;
+  
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Noto Serif KR", serif;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-deep text-slate-100 antialiased;
+  }
+}
+
+.glass-card {
+  @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl;
+}
+
+.light-card {
+  @apply bg-slate-50 border border-slate-200 rounded-2xl shadow-sm;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-accent via-purple-400 to-blue-400;
+}
