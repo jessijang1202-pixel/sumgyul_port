@@ -508,7 +508,7 @@ export default function App() {
               </div>
             </motion.div>
 
-            <div className="relative aspect-[4/5] rounded-[20px] overflow-hidden border border-white/15 shadow-[0_24px_60px_rgba(0,0,0,0.4)]">
+            <div className="relative aspect-[4/5] rounded-[20px] overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.4)]">
               <ImagePlaceholder ratio="aspect-[4/5]" caption={t.heroImageCaption} className="w-full h-full !bg-white/[0.04] !border-0 !text-white/50" />
             </div>
           </div>
