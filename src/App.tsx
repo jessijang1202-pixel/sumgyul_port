@@ -391,7 +391,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--surface)] selection:bg-brand-blue/20 max-w-[1200px] mx-auto relative shadow-2xl overflow-hidden border-x border-[var(--border-soft)]">
+    <div className="min-h-screen bg-[var(--surface)] selection:bg-brand-blue/20 max-w-[1200px] mx-auto relative shadow-2xl overflow-hidden">
       {/* Navigation */}
       <nav className="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] z-50 bg-brand-navy/90 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-6">
