@@ -11,9 +11,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
-  Layout,
-  Smartphone,
-  Target,
   ArrowRight,
   CheckCircle2,
   Instagram,
@@ -23,14 +20,8 @@ import {
   X,
   Sparkles,
   Zap,
-  ShieldCheck,
   ArrowLeft,
   Store,
-  Globe,
-  PenTool,
-  Video,
-  MapPin,
-  Newspaper,
   Sun,
   Moon
 } from 'lucide-react';
@@ -86,27 +77,12 @@ const contactSchema = z.object({
 
 type ContactFormValues = z.infer<typeof contactSchema>;
 
-const serviceIcons = [
-  <Layout className="w-6 h-6 text-brand-accent" />,
-  <Smartphone className="w-6 h-6 text-brand-accent" />,
-  <ShieldCheck className="w-6 h-6 text-brand-accent" />,
-];
-
-const portfolioIcons = [
-  <Globe className="w-6 h-6 text-brand-accent" />,
-  <PenTool className="w-6 h-6 text-brand-accent" />,
-  <Video className="w-6 h-6 text-brand-accent" />,
-  <MapPin className="w-6 h-6 text-brand-accent" />,
-  <Target className="w-6 h-6 text-brand-accent" />,
-  <Newspaper className="w-6 h-6 text-brand-accent" />,
-];
-
 const content = {
   kr: {
     navContact: "문의하기",
     heroBadge: "Website & App Development Studio",
     heroLine1: "아이디어에",
-    heroLine2: "숨결",
+    heroLine2: "≈숨결≈",
     heroLine3: "웹·앱으로 구현합니다",
     heroSub: "20년 서비스·개발 기획 경험을 바탕으로, 아이디어 단계의 서비스를 Next.js·Supabase·Vercel 기반의 실제 운영 가능한 웹·앱 제품으로 구현합니다.",
     ctaPrimary: "프로젝트 시작하기",
@@ -198,7 +174,7 @@ const content = {
     navContact: "Contact",
     heroBadge: "Website & App Development Studio",
     heroLine1: "We Breathe",
-    heroLine2: "Life",
+    heroLine2: "≈Life≈",
     heroLine3: "into Web & App Products",
     heroSub: "With 20 years of hands-on experience in service and development planning, we turn early-stage ideas into fully operational web and app products built on Next.js, Supabase, and Vercel.",
     ctaPrimary: "Start a Project",
@@ -544,9 +520,6 @@ export default function App() {
                   whileHover={{ y: -10 }}
                   className="glass-card p-8 group hover:bg-[var(--card-bg-hover)] transition-all flex flex-col items-center"
                 >
-                  <div className="w-12 h-12 bg-brand-purple/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    {serviceIcons[index]}
-                  </div>
                   <h4 className="text-xl font-bold mb-4">{service.title}</h4>
                   <p className="text-[var(--text-muted)] leading-relaxed">
                     {service.description}
@@ -577,9 +550,6 @@ export default function App() {
                   whileHover={{ y: -10 }}
                   className="glass-card p-8 group hover:bg-[var(--card-bg-hover)] transition-all flex flex-col items-center text-left"
                 >
-                  <div className="w-12 h-12 bg-brand-purple/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shrink-0">
-                    {portfolioIcons[index]}
-                  </div>
                   <h4 className="text-xl font-bold mb-4 text-center">{item.title}</h4>
                   <p className="text-[var(--text-muted)] leading-relaxed break-keep">
                     {item.description}
