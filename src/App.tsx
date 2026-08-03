@@ -106,7 +106,7 @@ const content = {
     navContact: "문의하기",
     heroBadge: "Website & App Development Studio",
     heroLine1: "아이디어에",
-    heroLine2: "≈숨결≈",
+    heroLine2: "숨결",
     heroLine3: "웹·앱으로 구현합니다",
     heroSub: "20년 서비스·개발 기획 경험을 바탕으로, 아이디어 단계의 서비스를 Next.js·Supabase·Vercel 기반의 실제 운영 가능한 웹·앱 제품으로 구현합니다.",
     ctaPrimary: "프로젝트 시작하기",
@@ -198,7 +198,7 @@ const content = {
     navContact: "Contact",
     heroBadge: "Website & App Development Studio",
     heroLine1: "We Breathe",
-    heroLine2: "≈Life≈",
+    heroLine2: "Life",
     heroLine3: "into Web & App Products",
     heroSub: "With 20 years of hands-on experience in service and development planning, we turn early-stage ideas into fully operational web and app products built on Next.js, Supabase, and Vercel.",
     ctaPrimary: "Start a Project",
@@ -824,21 +824,23 @@ export default function App() {
         </div>
       </footer>
 
-      {/* KakaoTalk Floating Button */}
-      <a
-        href="http://pf.kakao.com/_QxcxauX"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#FEE500] text-[#000000] px-5 py-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 group"
-      >
-        <div className="flex flex-col text-right">
-          <span className="text-[10px] font-bold opacity-70">숨결 온스튜디오</span>
-          <span className="text-sm font-extrabold">{t.kakaoCta}</span>
-        </div>
-        <svg viewBox="0 0 32 32" className="w-6 h-6" xmlns="http://www.w3.org/2000/svg">
-          <path d="M16 4.64c-6.96 0-12.64 4.48-12.64 10.08 0 3.52 2.32 6.64 5.76 8.48l-1.44 5.44c-.16.48.32.8.72.56l6.4-4.32c.4.08.8.08 1.2.08 6.96 0 12.64-4.48 12.64-10.08S22.96 4.64 16 4.64z" fill="#000000"/>
-        </svg>
-      </a>
+      {/* KakaoTalk Floating Button — temporarily hidden for screenshot, restore by removing `false &&` */}
+      {false && (
+        <a
+          href="http://pf.kakao.com/_QxcxauX"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#FEE500] text-[#000000] px-5 py-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 group"
+        >
+          <div className="flex flex-col text-right">
+            <span className="text-[10px] font-bold opacity-70">숨결 온스튜디오</span>
+            <span className="text-sm font-extrabold">{t.kakaoCta}</span>
+          </div>
+          <svg viewBox="0 0 32 32" className="w-6 h-6" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 4.64c-6.96 0-12.64 4.48-12.64 10.08 0 3.52 2.32 6.64 5.76 8.48l-1.44 5.44c-.16.48.32.8.72.56l6.4-4.32c.4.08.8.08 1.2.08 6.96 0 12.64-4.48 12.64-10.08S22.96 4.64 16 4.64z" fill="#000000"/>
+          </svg>
+        </a>
+      )}
     </div>
   );
 }
