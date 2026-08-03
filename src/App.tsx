@@ -11,21 +11,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
-  Layout,
-  Smartphone,
-  Wrench,
   ArrowRight,
   ArrowLeft,
   CheckCircle2,
-  Mail,
-  MapPin,
-  Clock,
-  MessageSquare,
   Menu,
   X,
   Sparkles,
-  Zap,
-  Store,
   Image as ImageIcon
 } from 'lucide-react';
 import { useForm } from 'react-hook-form';
@@ -89,12 +80,6 @@ const contactSchema = z.object({
 
 type ContactFormValues = z.infer<typeof contactSchema>;
 
-const serviceIcons = [
-  <Layout className="w-6 h-6 text-white" />,
-  <Smartphone className="w-6 h-6 text-white" />,
-  <Wrench className="w-6 h-6 text-white" />,
-];
-
 const content = {
   kr: {
     navLinks: [
@@ -105,7 +90,7 @@ const content = {
     ],
     navCta: '상담 신청',
     heroKicker: 'Web · App Development Studio',
-    heroTitle: <>아이디어에 <span className="text-gradient">≈숨결≈</span>을,<br />웹·앱으로 구현합니다</>,
+    heroTitle: <>아이디어에 <span className="text-gradient">숨결</span>을,<br />웹·앱으로 구현합니다</>,
     heroSub: "20년 서비스·개발 기획 경험을 바탕으로, 아이디어 단계의 서비스를 실제 운영 가능한 웹·앱 제품으로 구현합니다.",
     heroCtaPrimary: "무료 상담 신청",
     heroCtaSecondary: "포트폴리오 보기",
@@ -129,10 +114,10 @@ const content = {
     portfolioSub: "기획부터 개발, 배포와 운영까지 자체 인력으로 만들어온 숨결;온스튜디오의 서비스 개발 실적입니다.",
     portfolio: [
       { industry: "SaaS Platform", title: "로컬루프 코리아 (Localoop Korea)", description: "국내 거주 외국인을 위한 AI 기반 생활 적응 SaaS 플랫폼. 장소·음식·모임·사람 4대 축으로 회원 매칭·다국어 번역·지역 추천 제공, 특허 3건 출원.", image: "/p_localoop.png" },
-      { industry: "AI SaaS", title: "크리스피카피 (CrispyCopy)", description: "AI가 브랜드를 학습해 네이버 블로그·인스타그램·카카오톡·당근·스레드·틱톡 6개 채널용 SNS 콘텐츠를 자동 작성하는 SaaS. 특허 3건 출원.", image: undefined as string | undefined },
+      { industry: "AI SaaS", title: "크리스피카피 (CrispyCopy)", description: "AI가 브랜드를 학습해 네이버 블로그·인스타그램·카카오톡·당근·스레드·틱톡 6개 채널용 SNS 콘텐츠를 자동 작성하는 SaaS. 특허 3건 출원.", image: "/p_crispycopy.png" },
       { industry: "Mobile App", title: "스냅릴 (SnapReel)", description: "숏폼 영상 자동 생성 앱. 단순 자동생성 모드와 사용자 승인 절차 포함 10단계 고급 모드로 구성.", image: "/p_snapreel.png" },
-      { industry: "Community App", title: "평택광장", description: "지역 정당 당원(약 13명)을 위한 정보공유 앱. 현수막 지도, 행사 일정, 자원봉사 지도, Gemini API 기반 일일 인사말 카드 기능 포함.", image: undefined as string | undefined },
-      { industry: "Productivity App", title: "솔로플로우 (SoloFlow)", description: "개인의 주간·일간 목표를 설정하고 실행을 관리하는 목표 관리 앱.", image: undefined as string | undefined },
+      { industry: "Community App", title: "평택광장", description: "지역 정당 당원(약 13명)을 위한 정보공유 앱. 현수막 지도, 행사 일정, 자원봉사 지도, Gemini API 기반 일일 인사말 카드 기능 포함.", image: "/p_pyungtaek.jpg" },
+      { industry: "Productivity App", title: "솔로플로우 (SoloFlow)", description: "개인의 주간·일간 목표를 설정하고 실행을 관리하는 목표 관리 앱.", image: "/p_soloflow.jpg" },
       { industry: "Media Platform", title: "바이칼뉴스 (Baikal News)", description: "인터넷신문사의 뉴스 콘텐츠 제작·게재용 온라인 플랫폼 구축·운영에 개발 인력으로 참여.", image: "/p_baikalnews.png" },
     ],
     portfolioImageCaption: "프로젝트 사진 준비 중",
@@ -177,10 +162,10 @@ const content = {
     contactTitle: "지금 문의해보세요",
     contactSub: "간단한 정보만 남겨주시면 담당자가 1영업일 이내에 연락드립니다.",
     contactRows: [
-      { icon: 'mail', label: "sumgyulonstudio@gmail.com", href: "mailto:sumgyulonstudio@gmail.com" },
-      { icon: 'map', label: "경기도 평택시", href: null },
-      { icon: 'kakao', label: "카카오톡 상담", href: "http://pf.kakao.com/_QxcxauX" },
-      { icon: 'kmong', label: "크몽", href: "https://kmong.com/gig/762621" },
+      { label: "sumgyulonstudio@gmail.com", href: "mailto:sumgyulonstudio@gmail.com" },
+      { label: "경기도 평택시", href: null },
+      { label: "카카오톡 상담", href: "http://pf.kakao.com/_QxcxauX" },
+      { label: "크몽", href: "https://kmong.com/gig/762621" },
     ],
     formNameLabel: "이름 / 업체명",
     formNamePlaceholder: "예: 홍길동 / OO상회",
@@ -207,7 +192,7 @@ const content = {
     ],
     navCta: 'Contact',
     heroKicker: 'Web · App Development Studio',
-    heroTitle: <>We Breathe <span className="text-gradient">≈Life≈</span><br />into Web &amp; App Products</>,
+    heroTitle: <>We Breathe <span className="text-gradient">Life</span><br />into Web &amp; App Products</>,
     heroSub: "With 20 years of hands-on experience in service and development planning, we turn early-stage ideas into fully operational web and app products.",
     heroCtaPrimary: "Free Consultation",
     heroCtaSecondary: "View Portfolio",
@@ -231,10 +216,10 @@ const content = {
     portfolioSub: "See how Sumgyeol On Studio has planned, built, deployed, and operated its own services entirely in-house.",
     portfolio: [
       { industry: "SaaS Platform", title: "Localoop Korea", description: "An AI-powered life-adaptation SaaS platform for foreign residents in Korea. Matches members and recommends places, food, meetups, and people through AI, with multilingual translation and local recommendations. Three patents filed.", image: "/p_localoop.png" },
-      { industry: "AI SaaS", title: "CrispyCopy", description: "An AI SaaS that learns a brand's voice to auto-write SNS content for six channels — Naver Blog, Instagram, KakaoTalk, Danggeun, Threads, and TikTok. Three patents filed.", image: undefined as string | undefined },
+      { industry: "AI SaaS", title: "CrispyCopy", description: "An AI SaaS that learns a brand's voice to auto-write SNS content for six channels — Naver Blog, Instagram, KakaoTalk, Danggeun, Threads, and TikTok. Three patents filed.", image: "/p_crispycopy.png" },
       { industry: "Mobile App", title: "SnapReel", description: "A short-form video auto-generation app, offering both a simple auto-generate mode and a 10-step advanced mode with user approval steps.", image: "/p_snapreel.png" },
-      { industry: "Community App", title: "Pyeongtaek Plaza", description: "An information-sharing app for around 13 members of a local political party, featuring a banner map, event schedule, volunteer map, and Gemini API-based daily greeting cards.", image: undefined as string | undefined },
-      { industry: "Productivity App", title: "SoloFlow", description: "A goal-management app for setting and tracking personal weekly and daily goals.", image: undefined as string | undefined },
+      { industry: "Community App", title: "Pyeongtaek Plaza", description: "An information-sharing app for around 13 members of a local political party, featuring a banner map, event schedule, volunteer map, and Gemini API-based daily greeting cards.", image: "/p_pyungtaek.jpg" },
+      { industry: "Productivity App", title: "SoloFlow", description: "A goal-management app for setting and tracking personal weekly and daily goals.", image: "/p_soloflow.jpg" },
       { industry: "Media Platform", title: "Baikal News", description: "Joined as a developer to build and operate the online platform for an internet newspaper's news content production and publishing.", image: "/p_baikalnews.png" },
     ],
     portfolioImageCaption: "Project photo coming soon",
@@ -279,10 +264,10 @@ const content = {
     contactTitle: "Get in Touch",
     contactSub: "Leave us a few details and we'll get back to you within 1 business day.",
     contactRows: [
-      { icon: 'mail', label: "sumgyulonstudio@gmail.com", href: "mailto:sumgyulonstudio@gmail.com" },
-      { icon: 'map', label: "Pyeongtaek, South Korea", href: null },
-      { icon: 'kakao', label: "KakaoTalk", href: "http://pf.kakao.com/_QxcxauX" },
-      { icon: 'kmong', label: "Kmong", href: "https://kmong.com/gig/762621" },
+      { label: "sumgyulonstudio@gmail.com", href: "mailto:sumgyulonstudio@gmail.com" },
+      { label: "Pyeongtaek, South Korea", href: null },
+      { label: "KakaoTalk", href: "http://pf.kakao.com/_QxcxauX" },
+      { label: "Kmong", href: "https://kmong.com/gig/762621" },
     ],
     formNameLabel: "Name / Company",
     formNamePlaceholder: "John Doe",
@@ -301,15 +286,6 @@ const content = {
     kakaoCta: "Free 30-min Consultation",
   },
 } as const;
-
-function ContactIcon({ icon }: { icon: string }) {
-  const cls = "w-[18px] h-[18px] text-brand-blue";
-  if (icon === 'mail') return <Mail className={cls} />;
-  if (icon === 'map') return <MapPin className={cls} />;
-  if (icon === 'kakao') return <MessageSquare className={cls} />;
-  if (icon === 'kmong') return <Store className={cls} />;
-  return <Clock className={cls} />;
-}
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -498,8 +474,7 @@ export default function App() {
               </div>
               <div className="flex flex-wrap gap-2.5">
                 {t.services.map((service, index) => (
-                  <span key={index} className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white/85">
-                    <span className="text-brand-cyan [&>svg]:w-4 [&>svg]:h-4">{serviceIcons[index]}</span>
+                  <span key={index} className="inline-flex items-center px-3.5 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white/85">
                     {service.title}
                   </span>
                 ))}
@@ -547,16 +522,13 @@ export default function App() {
             <h2 className="text-2xl md:text-[32px] font-extrabold mb-2 tracking-tight break-keep">{t.servicesTitle}</h2>
             <p className="text-[var(--text-muted)] mb-12">{t.servicesSub}</p>
 
-            <div className="grid md:grid-cols-3 gap-6 text-left">
+            <div className="grid md:grid-cols-3 gap-6 text-center">
               {t.services.map((service, index) => (
                 <motion.div
                   key={index}
                   whileHover={{ y: -6 }}
                   className="glass-card p-8"
                 >
-                  <div className="w-[52px] h-[52px] rounded-2xl bg-gradient-to-br from-brand-blue to-brand-purple flex items-center justify-center mb-5">
-                    {serviceIcons[index]}
-                  </div>
                   <h4 className="text-lg font-bold mb-2.5">{service.title}</h4>
                   <p className="text-[var(--text-muted)] text-sm leading-relaxed">
                     {service.description}
@@ -706,23 +678,17 @@ export default function App() {
               </p>
 
               <div className="flex flex-col gap-4">
-                {t.contactRows.map((row, index) => {
-                  const inner = (
-                    <>
-                      <ContactIcon icon={row.icon} />
-                      <span>{row.label}</span>
-                    </>
-                  );
-                  return row.href ? (
-                    <a key={index} href={row.href} target={row.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" className="flex items-center gap-2.5 text-sm text-[var(--text-secondary)] hover:text-brand-blue transition-colors">
-                      {inner}
+                {t.contactRows.map((row, index) => (
+                  row.href ? (
+                    <a key={index} href={row.href} target={row.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" className="text-sm text-[var(--text-secondary)] hover:text-brand-blue transition-colors">
+                      {row.label}
                     </a>
                   ) : (
-                    <div key={index} className="flex items-center gap-2.5 text-sm text-[var(--text-secondary)]">
-                      {inner}
+                    <div key={index} className="text-sm text-[var(--text-secondary)]">
+                      {row.label}
                     </div>
-                  );
-                })}
+                  )
+                ))}
               </div>
             </div>
 
@@ -786,7 +752,6 @@ export default function App() {
                 className="py-3.5 rounded-full font-bold text-white bg-gradient-to-r from-brand-blue to-brand-purple hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center gap-2"
               >
                 {isSubmitting ? t.formSubmitting : t.formSubmit}
-                <Zap className="w-4 h-4" />
               </button>
 
               {submitStatus === 'success' && (
