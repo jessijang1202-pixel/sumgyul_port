@@ -109,7 +109,6 @@ const content = {
     heroSub: "20년 서비스·개발 기획 경험을 바탕으로, 아이디어 단계의 서비스를 실제 운영 가능한 웹·앱 제품으로 구현합니다.",
     heroCtaPrimary: "무료 상담 신청",
     heroCtaSecondary: "포트폴리오 보기",
-    heroImageCaption: "브랜드 대표 이미지 준비 중",
     aboutEyebrow: "About Us",
     aboutTitle: "숨결 온스튜디오 소개",
     aboutTags: ["경기도 평택", "20년 기획 경험", "특허 3건 출원"],
@@ -212,7 +211,6 @@ const content = {
     heroSub: "With 20 years of hands-on experience in service and development planning, we turn early-stage ideas into fully operational web and app products.",
     heroCtaPrimary: "Free Consultation",
     heroCtaSecondary: "View Portfolio",
-    heroImageCaption: "Brand image coming soon",
     aboutEyebrow: "About Us",
     aboutTitle: "About Sumgyeol On Studio",
     aboutTags: ["Pyeongtaek, Korea", "20 Years of Planning", "3 Patents Filed"],
@@ -509,7 +507,11 @@ export default function App() {
             </motion.div>
 
             <div className="relative aspect-[4/5] rounded-[20px] overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.4)]">
-              <ImagePlaceholder ratio="aspect-[4/5]" caption={t.heroImageCaption} className="w-full h-full !bg-white/[0.04] !border-0 !text-white/50" />
+              <img
+                src="/hero-cityscape.png"
+                alt=""
+                className="w-full h-full object-cover object-top"
+              />
             </div>
           </div>
         </section>
