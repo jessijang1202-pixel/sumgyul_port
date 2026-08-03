@@ -114,7 +114,7 @@ const content = {
     aboutTitle: "숨결 온스튜디오 소개",
     aboutTags: ["경기도 평택", "20년 기획 경험", "특허 3건 출원"],
     about: [
-      "숨결 온스튜디오는 경기도 평택의 웹사이트·앱 개발 전문 스타트업입니다. 대표의 20년 서비스·개발 기획 경험을 바탕으로, 아이디어를 Next.js·Supabase·Vercel 기반의 실제 운영 가능한 웹·앱 제품으로 구현합니다.",
+      "숨결 온스튜디오는 경기도 평택의 웹사이트·앱 개발 전문 스타트업입니다. 대표의 20년 서비스·개발 기획 경험을 바탕으로, 아이디어를 Next.js 기반의 실제 운영 가능한 웹·앱 제품으로 구현합니다.",
       "로컬루프 코리아, 크리스피카피, 스냅릴 등 다수의 자체 서비스를 기획·개발·운영하며 특허 3건을 출원했고, 소상공인·지역 기업의 디지털 전환을 지원하는 개발 전문기업으로 성장하고 있습니다.",
     ],
     servicesEyebrow: "Services",
@@ -123,7 +123,7 @@ const content = {
     services: [
       { title: "웹사이트 구축", description: "Next.js 기반의 반응형 웹사이트와 랜딩페이지를 기획부터 배포까지 자체 인력으로 구축합니다." },
       { title: "애플리케이션 개발", description: "회원 관리, 외부 API 연동, 관리자 대시보드 등 실제 운영 가능한 웹·앱 서비스를 설계하고 개발합니다." },
-      { title: "유지보수 & 운영", description: "Vercel·Supabase 기반의 배포 환경을 구성하고, 서비스 오픈 이후의 유지보수와 운영을 지원합니다." },
+      { title: "유지보수 & 운영", description: "안정적인 배포 환경을 구성하고, 서비스 오픈 이후의 유지보수와 운영을 지원합니다." },
     ],
     portfolioEyebrow: "Portfolio",
     portfolioTitle: "직접 기획하고 개발한 서비스들",
@@ -152,7 +152,7 @@ const content = {
       },
       {
         title: "웹 서비스 개발",
-        features: ["회원 관리 시스템 구축", "외부 API 연동", "관리자 대시보드 개발", "Supabase 기반 데이터베이스 설계"],
+        features: ["회원 관리 시스템 구축", "외부 API 연동", "관리자 대시보드 개발", "데이터베이스 설계 및 구축"],
         duration: "협의 후 안내",
         price: "별도 견적",
         priceSuffix: ""
@@ -166,7 +166,7 @@ const content = {
       },
       {
         title: "유지보수 & 사무자동화",
-        features: ["기존 서비스 유지보수 및 기능 개선", "소규모 기능 추가 개발", "업무 자동화 도구 개발", "Vercel 기반 배포 환경 운영"],
+        features: ["기존 서비스 유지보수 및 기능 개선", "소규모 기능 추가 개발", "업무 자동화 도구 개발", "배포 환경 구성 및 운영"],
         duration: "협의 후 안내",
         price: "별도 견적",
         priceSuffix: ""
@@ -217,7 +217,7 @@ const content = {
     aboutTitle: "About Sumgyeol On Studio",
     aboutTags: ["Pyeongtaek, Korea", "20 Years of Planning", "3 Patents Filed"],
     about: [
-      "Sumgyeol On Studio is a website and app development startup based in Pyeongtaek, South Korea. Drawing on the founder's 20 years of experience in service and development planning, we turn ideas into fully operational web and app products built on Next.js, Supabase, and Vercel.",
+      "Sumgyeol On Studio is a website and app development startup based in Pyeongtaek, South Korea. Drawing on the founder's 20 years of experience in service and development planning, we turn ideas into fully operational web and app products built on Next.js.",
       "We've planned, built, and operated proprietary services including Localoop Korea, CrispyCopy, and SnapReel, filed three patents, and continue growing as a development studio that helps small businesses and local companies with practical digital transformation.",
     ],
     servicesEyebrow: "Services",
@@ -226,7 +226,7 @@ const content = {
     services: [
       { title: "Website Development", description: "We build responsive websites and landing pages end-to-end, from planning to deployment, using Next.js." },
       { title: "Application Development", description: "We design and build fully operational web and app services, including member management, third-party API integrations, and admin dashboards." },
-      { title: "Maintenance & Operations", description: "We set up deployment infrastructure on Vercel and Supabase, and support maintenance and operations after launch." },
+      { title: "Maintenance & Operations", description: "We set up reliable deployment infrastructure and support maintenance and operations after launch." },
     ],
     portfolioEyebrow: "Portfolio",
     portfolioTitle: "Services We've Built In-House",
@@ -255,7 +255,7 @@ const content = {
       },
       {
         title: "Web Service Development",
-        features: ["Member management system", "Third-party API integration", "Admin dashboard development", "Database design with Supabase"],
+        features: ["Member management system", "Third-party API integration", "Admin dashboard development", "Database design & setup"],
         duration: "By consultation",
         price: "Custom quote",
         priceSuffix: ""
@@ -269,7 +269,7 @@ const content = {
       },
       {
         title: "Maintenance & Automation",
-        features: ["Maintenance & improvements for existing services", "Small-scale feature additions", "Office automation tool development", "Deployment operations on Vercel"],
+        features: ["Maintenance & improvements for existing services", "Small-scale feature additions", "Office automation tool development", "Deployment environment setup & operations"],
         duration: "By consultation",
         price: "Custom quote",
         priceSuffix: ""
