@@ -397,9 +397,18 @@ export default function App() {
             </a>
           </div>
 
-          <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X /> : <Menu />}
-          </button>
+          <div className="flex md:hidden items-center gap-3">
+            <button
+              onClick={toggleLang}
+              className="w-9 h-9 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-xs font-bold"
+              aria-label="Toggle language"
+            >
+              {lang === 'kr' ? 'EN' : 'KR'}
+            </button>
+            <button className="text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {isMenuOpen ? <X /> : <Menu />}
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -417,14 +426,6 @@ export default function App() {
                 <a key={link.href} href={link.href} onClick={() => setIsMenuOpen(false)}>{link.label}</a>
               ))}
               <a href="#contact" onClick={() => setIsMenuOpen(false)} className="text-brand-cyan-soft">{t.navCta}</a>
-            </div>
-            <div className="flex items-center justify-center mt-10">
-              <button
-                onClick={toggleLang}
-                className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-bold text-white/70"
-              >
-                {lang === 'kr' ? 'EN' : 'KR'}
-              </button>
             </div>
           </motion.div>
         )}
