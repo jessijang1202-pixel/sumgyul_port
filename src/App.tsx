@@ -257,17 +257,13 @@ export default function App() {
   ];
 
   const aboutKr = [
-    "숨결 온스튜디오는 경기도 평택에 소재한 기술 기반 스타트업으로, 웹사이트 구축과 애플리케이션 개발을 핵심 사업으로 하는 IT 전문기업입니다. 대표는 20년간 서비스 기획 및 개발 기획 분야에서 실무 경험을 쌓아왔으며, 이를 바탕으로 아이디어 단계의 서비스를 실제 운영 가능한 웹·앱 제품으로 구현하는 데 주력하고 있습니다. Next.js, Supabase, Vercel 등 현재 스타트업 시장에서 널리 쓰이는 기술 스택을 기반으로, 기획-설계-개발-배포-운영에 이르는 전 과정을 자체 인력으로 수행할 수 있는 개발 조직을 갖추고 있습니다.",
-    "숨결 온스튜디오는 다수의 자체 서비스를 기획·개발하여 운영한 실적을 보유하고 있습니다. 국내 거주 외국인을 위한 AI 기반 생활 적응 플랫폼 로컬루프 코리아(Localoop Korea), AI가 SNS 콘텐츠를 자동으로 작성해주는 크리스피카피(CrispyCopy), 숏폼 영상을 자동 생성하는 스냅릴(SnapReel), 지역 정당 당원들을 위한 정보공유 애플리케이션 평택광장, 주간·일간 목표 관리 애플리케이션 솔로플로우(SoloFlow) 등이 대표적이며, 인터넷신문사 바이칼뉴스의 온라인 플랫폼 구축에도 참여하였습니다. 이 과정에서 회원 관리, 지도 연동, 외부 API 연동, 관리자 대시보드 구축 등 실제 서비스 운영에 필요한 기술 요소를 폭넓게 다루어 왔습니다.",
-    "또한 세 건의 특허를 출원하는 등 자체 개발한 서비스의 기술적 차별성을 인정받기 위한 노력을 지속하고 있으며, 정부 창업지원사업 및 공공조달 용역 분야에서도 다국어 콘텐츠 시스템, AI 활용 교육 프로그램, 소규모 웹 개발 등 개발 역량을 필요로 하는 과업을 중심으로 참여 영역을 넓혀가고 있습니다.",
-    "앞으로 숨결 온스튜디오는 소상공인 및 지역 기업을 대상으로 한 홈페이지 구축 및 사무 자동화 앱 등 실질적인 디지털 전환 서비스를 제공하는 동시에, 자체 서비스형 애플리케이션 개발을 지속하여 개발 전문기업으로서의 정체성을 강화해 나가고자 합니다.",
+    "숨결 온스튜디오는 경기도 평택의 웹사이트·앱 개발 전문 스타트업입니다. 대표의 20년 서비스·개발 기획 경험을 바탕으로, 아이디어를 Next.js·Supabase·Vercel 기반의 실제 운영 가능한 웹·앱 제품으로 구현합니다.",
+    "로컬루프 코리아, 크리스피카피, 스냅릴 등 다수의 자체 서비스를 기획·개발·운영하며 특허 3건을 출원했고, 소상공인·지역 기업의 디지털 전환을 지원하는 개발 전문기업으로 성장하고 있습니다.",
   ];
 
   const aboutEn = [
-    "Sumgyeol On Studio is a technology startup based in Pyeongtaek, Gyeonggi-do, South Korea, specializing in website and application development. The founder has 20 years of hands-on experience in service and development planning, applied toward turning early-stage ideas into fully operational web and app products. The studio handles planning, design, development, deployment, and operation in-house, using tools such as Next.js, Supabase, and Vercel.",
-    "The studio has planned, built, and operated several proprietary services, including Localoop Korea, an AI-powered life-adaptation platform for foreign residents in Korea; CrispyCopy, an AI tool for automated SNS content writing; SnapReel, a short-form video auto-generation app; Pyeongtaek Plaza, an information-sharing app for local political party members; and SoloFlow, a weekly and daily goal-management app. The team also helped build the online platform for Baikal News, an internet newspaper, gaining hands-on experience in member management, map integration, API integration, and admin dashboard development.",
-    "Three patents have been filed for its in-house services, and the studio has been expanding into government startup support programs and public procurement projects centered on development work, such as multilingual content systems, AI education programs, and small-scale web development.",
-    "Going forward, Sumgyeol On Studio aims to support small businesses and local companies with practical digital transformation services such as website development and office automation apps, while continuing to build its own proprietary applications.",
+    "Sumgyeol On Studio is a website and app development startup based in Pyeongtaek, South Korea. Drawing on the founder's 20 years of experience in service and development planning, we turn ideas into fully operational web and app products built on Next.js, Supabase, and Vercel.",
+    "We've planned, built, and operated proprietary services including Localoop Korea, CrispyCopy, and SnapReel, filed three patents, and continue growing as a development studio that helps small businesses and local companies with practical digital transformation.",
   ];
 
   return (
