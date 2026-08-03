@@ -796,21 +796,23 @@ export default function App() {
         </div>
       </footer>
 
-      {/* KakaoTalk Floating Button */}
-      <a
-        href="http://pf.kakao.com/_QxcxauX"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#FEE500] text-[#000000] px-5 py-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 group"
-      >
-        <div className="flex flex-col text-right">
-          <span className="text-[10px] font-bold opacity-70">숨결 온스튜디오</span>
-          <span className="text-sm font-extrabold">{t.kakaoCta}</span>
-        </div>
-        <svg viewBox="0 0 32 32" className="w-6 h-6" xmlns="http://www.w3.org/2000/svg">
-          <path d="M16 4.64c-6.96 0-12.64 4.48-12.64 10.08 0 3.52 2.32 6.64 5.76 8.48l-1.44 5.44c-.16.48.32.8.72.56l6.4-4.32c.4.08.8.08 1.2.08 6.96 0 12.64-4.48 12.64-10.08S22.96 4.64 16 4.64z" fill="#000000"/>
-        </svg>
-      </a>
+      {/* KakaoTalk Floating Button — temporarily hidden, restore by removing `false &&` */}
+      {false && (
+        <a
+          href="http://pf.kakao.com/_QxcxauX"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#FEE500] text-[#000000] px-5 py-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 group"
+        >
+          <div className="flex flex-col text-right">
+            <span className="text-[10px] font-bold opacity-70">숨결 온스튜디오</span>
+            <span className="text-sm font-extrabold">{t.kakaoCta}</span>
+          </div>
+          <svg viewBox="0 0 32 32" className="w-6 h-6" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 4.64c-6.96 0-12.64 4.48-12.64 10.08 0 3.52 2.32 6.64 5.76 8.48l-1.44 5.44c-.16.48.32.8.72.56l6.4-4.32c.4.08.8.08 1.2.08 6.96 0 12.64-4.48 12.64-10.08S22.96 4.64 16 4.64z" fill="#000000"/>
+          </svg>
+        </a>
+      )}
     </div>
   );
 }
