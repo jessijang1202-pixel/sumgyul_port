@@ -73,7 +73,10 @@ function ImagePlaceholder({ ratio, caption, className }: { ratio: string; captio
 const contactSchema = z.object({
   name: z.string().min(2, '이름을 입력해주세요.'),
   email: z.string().email('올바른 이메일 주소를 입력해주세요.'),
-  phone: z.string().optional(),
+  phone: z.string().optional().refine(
+    (val) => !val || /^0\d{1,2}-?\d{3,4}-?\d{4}$/.test(val),
+    { message: '올바른 전화번호 형식으로 입력해주세요. (예: 010-1234-5678)' }
+  ),
   message: z.string().min(10, '문의 내용을 10자 이상 입력해주세요.'),
   consent: z.boolean().refine((v) => v === true, { message: '개인정보 수집·이용에 동의해주세요.' }),
 });
@@ -273,7 +276,7 @@ const content = {
     formNamePlaceholder: "John Doe",
     formEmailLabel: "Email Address",
     formPhoneLabel: "Phone",
-    formPhonePlaceholder: "+82 10-0000-0000",
+    formPhonePlaceholder: "010-1234-5678",
     formMessageLabel: "Message",
     formMessagePlaceholder: "Tell us more about your project.",
     formConsentLabel: "I agree to the collection and use of my personal information",
@@ -723,9 +726,13 @@ export default function App() {
                 <input
                   {...register('phone')}
                   type="tel"
-                  className="w-full box-border px-3.5 py-3 rounded-[10px] border bg-[var(--surface-alt)] border-[var(--border-soft)] focus:outline-none focus:border-brand-blue transition-colors"
+                  className={cn(
+                    "w-full box-border px-3.5 py-3 rounded-[10px] border bg-[var(--surface-alt)] border-[var(--border-soft)] focus:outline-none focus:border-brand-blue transition-colors",
+                    errors.phone && "border-red-500"
+                  )}
                   placeholder={t.formPhonePlaceholder}
                 />
+                {errors.phone && <p className="text-xs text-red-500 mt-1">{errors.phone.message}</p>}
               </div>
               <div>
                 <label className="block text-sm text-[var(--text-muted)] mb-1.5">{t.formMessageLabel}</label>
