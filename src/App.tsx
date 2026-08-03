@@ -10,23 +10,27 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-  Layout, 
-  Palette, 
-  Target, 
-  ArrowRight, 
-  CheckCircle2, 
-  Instagram, 
-  Mail, 
+import {
+  Layout,
+  Smartphone,
+  Target,
+  ArrowRight,
+  CheckCircle2,
+  Instagram,
+  Mail,
   MessageSquare,
-  ChevronRight,
   Menu,
   X,
   Sparkles,
   Zap,
   ShieldCheck,
   ArrowLeft,
-  Store
+  Store,
+  Globe,
+  PenTool,
+  Video,
+  MapPin,
+  Newspaper
 } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -82,56 +86,55 @@ export default function App() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
-  const [selectedItem, setSelectedItem] = useState<any | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState<{title: string, items: any[]} | null>(null);
   const [currentPricingIndex, setCurrentPricingIndex] = useState(0);
+  const [aboutLang, setAboutLang] = useState<'kr' | 'en'>('kr');
 
   const pricingPlans = [
     {
-      title: "로고 디자인 베이직",
+      title: "랜딩페이지 제작",
       features: [
-        "브랜드 코어 분석 및 비주얼 컨셉 도출",
-        "로고 시안 2개 제안",
-        "수정 2회",
-        "디지털 응용 Mock-up 제공"
+        "반응형 원페이지 웹사이트 구축",
+        "Next.js 기반 페이지 개발",
+        "문의폼 및 메일 연동",
+        "모바일 최적화 및 기본 SEO 세팅"
       ],
-      duration: "1주 이내",
-      price: "10만원",
-      priceSuffix: "부터"
+      duration: "협의 후 안내",
+      price: "별도 견적",
+      priceSuffix: ""
     },
     {
-      title: "로고 디자인 프리미엄",
+      title: "웹 서비스 개발",
       features: [
-        "시안 2종 제안, 수정 2회",
-        "비주얼 아이덴티티 가이드라인 제공",
-        "고해상도 그래픽 에셋 제공",
-        "디지털 응용 Mock-up 제공"
+        "회원 관리 시스템 구축",
+        "외부 API 연동",
+        "관리자 대시보드 개발",
+        "Supabase 기반 데이터베이스 설계"
       ],
-      duration: "1주 이내",
-      price: "20만원",
-      priceSuffix: "부터"
+      duration: "협의 후 안내",
+      price: "별도 견적",
+      priceSuffix: ""
     },
     {
-      title: "상세페이지 제작",
+      title: "모바일 앱 개발",
       features: [
-        "고객 심리 기반의 셀링 포인트(USP) 도출",
-        "시선을 사로잡는 스토리텔링 레이아웃",
-        "고감도 제품 보정 및 합성",
-        "모바일 최적화 및 UI/UX 디자인"
+        "서비스 기획 및 화면 설계",
+        "iOS/Android 대응 애플리케이션 개발",
+        "배포 및 스토어 등록 지원",
+        "출시 이후 초기 안정화 지원"
       ],
-      duration: "1주 이내",
-      price: "10만원",
-      priceSuffix: "부터"
+      duration: "협의 후 안내",
+      price: "별도 견적",
+      priceSuffix: ""
     },
     {
-      title: "브랜딩 전략 기획",
+      title: "유지보수 & 사무자동화",
       features: [
-        "브랜드 버벌 아이덴티티(V.I) 수립",
-        "타겟 페르소나 및 포지셔닝 전략",
-        "브랜드 네이밍(네이밍 의미, 슬로건, 네이밍 전략)",
-        "상품 팩키지 디자인, 광고 랜딩 페이지 제작"
+        "기존 서비스 유지보수 및 기능 개선",
+        "소규모 기능 추가 개발",
+        "업무 자동화 도구 개발",
+        "Vercel 기반 배포 환경 운영"
       ],
-      duration: "1-2개월",
+      duration: "협의 후 안내",
       price: "별도 견적",
       priceSuffix: ""
     }
@@ -144,18 +147,6 @@ export default function App() {
   const prevPricing = () => {
     setCurrentPricingIndex((prev) => (prev - 1 + pricingPlans.length) % pricingPlans.length);
   };
-
-  // Lock body scroll when modal is open
-  React.useEffect(() => {
-    if (selectedItem || selectedCategory) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [selectedItem, selectedCategory]);
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
@@ -210,73 +201,74 @@ export default function App() {
 
   const services = [
     {
-      title: "로고 디자인",
-      description: "브랜드 인터뷰와 경쟁사 리서치를 통해 브랜드의 숨결이 느껴지는, 단단한 첫인상의 로고를 만듭니다.",
-      icon: <Palette className="w-6 h-6 text-brand-accent" />,
-    },
-    {
-      title: "브랜딩 & 마케팅",
-      description: "브랜드 키워드 정의를 통해 이름, 스토리, 비주얼, SNS 관리까지 브랜드의 숨결을 일관되게 정리합니다.",
-      icon: <Target className="w-6 h-6 text-brand-accent" />,
-    },
-    {
-      title: "상세페이지 디자인",
-      description: "상품 USP 정리, 스토리 구조 설계, 설득형 카피 등 임팩트 있게 구성된 상세페이지로 구매전환율을 즉각 상승시켜드립니다.",
+      title: "웹사이트 구축",
+      description: "Next.js 기반의 반응형 웹사이트와 랜딩페이지를 기획부터 배포까지 자체 인력으로 구축합니다.",
       icon: <Layout className="w-6 h-6 text-brand-accent" />,
+    },
+    {
+      title: "애플리케이션 개발",
+      description: "회원 관리, 외부 API 연동, 관리자 대시보드 등 실제 운영 가능한 웹·앱 서비스를 설계하고 개발합니다.",
+      icon: <Smartphone className="w-6 h-6 text-brand-accent" />,
+    },
+    {
+      title: "유지보수 & 운영",
+      description: "Vercel·Supabase 기반의 배포 환경을 구성하고, 서비스 오픈 이후의 유지보수와 운영을 지원합니다.",
+      icon: <ShieldCheck className="w-6 h-6 text-brand-accent" />,
     },
   ];
 
-  const portfolio = {
-    logoDesign: [
-      { id: 'l1', title: "까페 Brew Moment 로고 이미지와 간판", category: "Logo Design", thumbnail: "/sum_logo1.png", image: "/brewmoment.png" },
-      { id: 'l2', title: "힙하고 트렌디한 업사이클링 브랜드 - RERE", category: "Logo Design", thumbnail: "/sum_logo2.png", image: "/rere.png" },
-      { id: 'l3', title: "Tech 스타트업 싱크노트 SyncNote", category: "Logo Design", thumbnail: "/sum_logo3.png", image: "/sync.png" },
-      { id: 'l4', title: "정갈한 가정식 반상 또는 모던 솥밥 전문점 - 다온 반상", category: "Logo Design", thumbnail: "/sum_logo4.png", image: "/daon.png" },
-    ],
-    brandingMarketing: [
-      { id: 'b1', title: "빈티지 탐험 스탬프 - 트래커스 블렌드", category: "Branding & Marketing", thumbnail: "/sum_trackers.png", image: "/portfolio_trackers.png" },
-      { id: 'b2', title: "지속가능한 슬로우 패션 - 리포즈(RE:PAUSE)", category: "Branding & Marketing", thumbnail: "/logo_lepause.png", image: "/portfolio_lepause.png" },
-    ],
-    detailPage: [
-      { id: 'd1', title: "프리미엄 한국 전통주 또록", category: "Detail Page", thumbnail: "/page_6-2.gif", image: "/ttorok.png", images: ["/page_6-2.gif", "/ttorok.png"], thumbnailPosition: "object-top" },
-      { 
-        id: 'd5', 
-        title: "가장 따뜻한 위로, 다온의 정성, 채끝 트러플 솥밥", 
-        category: "Detail Page", 
-        thumbnail: "/sobtbob_move.gif", 
-        image: "/sotbob.png",
-        images: ["/sobtbob_move.gif", "/sotbob.png"],
-        thumbnailPosition: "object-top"
-      },
-      { 
-        id: 'd6', 
-        title: "바다의 깊은 온기를 담다, 전복 내장 (게우) 솥밥", 
-        category: "Detail Page", 
-        thumbnail: "/jonbok_move.gif", 
-        image: "/jonbok.png",
-        images: ["/jonbok_move.gif", "/jonbok.png"],
-        thumbnailPosition: "object-top"
-      },
-      { 
-        id: 'd3', 
-        title: "3,650일 단 하나의 향, 트래커스 블렌드", 
-        category: "Detail Page", 
-        thumbnail: "/treckers_move1.gif", 
-        image: "/portfolio_trackersblend.png",
-        images: ["/treckers_move1.gif", "/portfolio_trackersblend.png"]
-      },
-      { 
-        id: 'd4', 
-        title: "가장 완벽한 온도와 균형을 유지하는 zeln 젤른 텀블러", 
-        category: "Detail Page", 
-        thumbnail: "/zeln_move.gif", 
-        image: "/zeln.png",
-        images: ["/zeln_move.gif", "/zeln.png"],
-        thumbnailPosition: "object-top"
-      },
-      { id: 'd2', title: "필드위 그녀의 매끈한 다리의 비밀 벨벳블리즈", category: "Detail Page", thumbnail: "/velvet1.png", image: "/velvet1.png", thumbnailPosition: "object-[center_1%]" },
-    ]
-  };
+  const portfolio = [
+    {
+      id: 'p1',
+      title: "로컬루프 코리아 (Localoop Korea)",
+      description: "국내 거주 외국인을 위한 AI 기반 생활 적응 SaaS 플랫폼. 장소·음식·모임·사람 4대 축으로 회원 매칭·다국어 번역·지역 추천 제공, 특허 3건 출원.",
+      icon: <Globe className="w-6 h-6 text-brand-accent" />,
+    },
+    {
+      id: 'p2',
+      title: "크리스피카피 (CrispyCopy)",
+      description: "AI가 브랜드를 학습해 네이버 블로그·인스타그램·카카오톡·당근·스레드·틱톡 6개 채널용 SNS 콘텐츠를 자동 작성하는 SaaS. 특허 3건 출원.",
+      icon: <PenTool className="w-6 h-6 text-brand-accent" />,
+    },
+    {
+      id: 'p3',
+      title: "스냅릴 (SnapReel)",
+      description: "숏폼 영상 자동 생성 앱. 단순 자동생성 모드와 사용자 승인 절차 포함 10단계 고급 모드로 구성.",
+      icon: <Video className="w-6 h-6 text-brand-accent" />,
+    },
+    {
+      id: 'p4',
+      title: "평택광장",
+      description: "지역 정당 당원(약 13명)을 위한 정보공유 앱. 현수막 지도, 행사 일정, 자원봉사 지도, Gemini API 기반 일일 인사말 카드 기능 포함.",
+      icon: <MapPin className="w-6 h-6 text-brand-accent" />,
+    },
+    {
+      id: 'p5',
+      title: "솔로플로우 (SoloFlow)",
+      description: "개인의 주간·일간 목표를 설정하고 실행을 관리하는 목표 관리 앱.",
+      icon: <Target className="w-6 h-6 text-brand-accent" />,
+    },
+    {
+      id: 'p6',
+      title: "바이칼뉴스 (Baikal News)",
+      description: "인터넷신문사의 뉴스 콘텐츠 제작·게재용 온라인 플랫폼 구축·운영에 개발 인력으로 참여.",
+      icon: <Newspaper className="w-6 h-6 text-brand-accent" />,
+    },
+  ];
+
+  const aboutKr = [
+    "숨결 온스튜디오는 경기도 평택에 소재한 기술 기반 스타트업으로, 웹사이트 구축과 애플리케이션 개발을 핵심 사업으로 하는 IT 전문기업입니다. 대표는 20년간 서비스 기획 및 개발 기획 분야에서 실무 경험을 쌓아왔으며, 이를 바탕으로 아이디어 단계의 서비스를 실제 운영 가능한 웹·앱 제품으로 구현하는 데 주력하고 있습니다. Next.js, Supabase, Vercel 등 현재 스타트업 시장에서 널리 쓰이는 기술 스택을 기반으로, 기획-설계-개발-배포-운영에 이르는 전 과정을 자체 인력으로 수행할 수 있는 개발 조직을 갖추고 있습니다.",
+    "숨결 온스튜디오는 다수의 자체 서비스를 기획·개발하여 운영한 실적을 보유하고 있습니다. 국내 거주 외국인을 위한 AI 기반 생활 적응 플랫폼 로컬루프 코리아(Localoop Korea), AI가 SNS 콘텐츠를 자동으로 작성해주는 크리스피카피(CrispyCopy), 숏폼 영상을 자동 생성하는 스냅릴(SnapReel), 지역 정당 당원들을 위한 정보공유 애플리케이션 평택광장, 주간·일간 목표 관리 애플리케이션 솔로플로우(SoloFlow) 등이 대표적이며, 인터넷신문사 바이칼뉴스의 온라인 플랫폼 구축에도 참여하였습니다. 이 과정에서 회원 관리, 지도 연동, 외부 API 연동, 관리자 대시보드 구축 등 실제 서비스 운영에 필요한 기술 요소를 폭넓게 다루어 왔습니다.",
+    "또한 세 건의 특허를 출원하는 등 자체 개발한 서비스의 기술적 차별성을 인정받기 위한 노력을 지속하고 있으며, 정부 창업지원사업 및 공공조달 용역 분야에서도 다국어 콘텐츠 시스템, AI 활용 교육 프로그램, 소규모 웹 개발 등 개발 역량을 필요로 하는 과업을 중심으로 참여 영역을 넓혀가고 있습니다.",
+    "앞으로 숨결 온스튜디오는 소상공인 및 지역 기업을 대상으로 한 홈페이지 구축 및 사무 자동화 앱 등 실질적인 디지털 전환 서비스를 제공하는 동시에, 자체 서비스형 애플리케이션 개발을 지속하여 개발 전문기업으로서의 정체성을 강화해 나가고자 합니다.",
+  ];
+
+  const aboutEn = [
+    "Sumgyeol On Studio is a technology startup based in Pyeongtaek, Gyeonggi-do, South Korea, specializing in website and application development. The founder has 20 years of hands-on experience in service and development planning, applied toward turning early-stage ideas into fully operational web and app products. The studio handles planning, design, development, deployment, and operation in-house, using tools such as Next.js, Supabase, and Vercel.",
+    "The studio has planned, built, and operated several proprietary services, including Localoop Korea, an AI-powered life-adaptation platform for foreign residents in Korea; CrispyCopy, an AI tool for automated SNS content writing; SnapReel, a short-form video auto-generation app; Pyeongtaek Plaza, an information-sharing app for local political party members; and SoloFlow, a weekly and daily goal-management app. The team also helped build the online platform for Baikal News, an internet newspaper, gaining hands-on experience in member management, map integration, API integration, and admin dashboard development.",
+    "Three patents have been filed for its in-house services, and the studio has been expanding into government startup support programs and public procurement projects centered on development work, such as multilingual content systems, AI education programs, and small-scale web development.",
+    "Going forward, Sumgyeol On Studio aims to support small businesses and local companies with practical digital transformation services such as website development and office automation apps, while continuing to build its own proprietary applications.",
+  ];
 
   return (
     <div className="min-h-screen bg-brand-deep selection:bg-brand-purple/30 max-w-[1200px] mx-auto relative shadow-2xl overflow-hidden border-x border-white/5">
@@ -345,17 +337,17 @@ export default function App() {
                 transition={{ delay: 0.2 }}
                 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-purple/20 border border-brand-purple/30 text-brand-accent text-xs font-bold uppercase tracking-widest mb-8 backdrop-blur-sm"
               >
-                <span>Premium Marketing & Design Studio</span>
+                <span>Website & App Development Studio</span>
               </motion.div>
-              
+
               <h1 className="font-extrabold tracking-tighter leading-[0.9] mb-10 flex flex-col items-center">
-                <span className="text-4xl md:text-7xl text-slate-200">브랜드에</span>
+                <span className="text-4xl md:text-7xl text-slate-200">아이디어에</span>
                 <span className="text-6xl md:text-9xl text-transparent bg-clip-text bg-gradient-to-r from-brand-accent via-purple-400 to-brand-blue italic py-2">≈숨결≈</span>
-                <span className="text-4xl md:text-7xl text-slate-200">불어넣으세요</span>
+                <span className="text-4xl md:text-7xl text-slate-200">웹·앱으로 구현합니다</span>
               </h1>
-              
+
               <p className="text-[15px] md:text-[19px] text-slate-300 mb-12 leading-relaxed max-w-2xl mx-auto font-serif break-keep">
-                당신의 제품이 가진 가치를 가장 완벽한 시각적 언어로 만들어보세요. 12년 마케팅 기획 경험으로 로고부터 마케팅까지 ’숨 쉬는 브랜드’를 만들어 드립니다.
+                20년 서비스·개발 기획 경험을 바탕으로, 아이디어 단계의 서비스를 Next.js·Supabase·Vercel 기반의 실제 운영 가능한 웹·앱 제품으로 구현합니다.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
@@ -380,12 +372,38 @@ export default function App() {
           </div>
         </section>
 
+        {/* About Section */}
+        <section id="about" className="py-24 px-6 text-center">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex flex-col items-center justify-center mb-12 gap-6">
+              <div>
+                <h2 className="text-sm font-bold text-brand-accent uppercase tracking-widest mb-4">About Us</h2>
+                <h3 className="text-3xl md:text-5xl font-bold tracking-tight break-keep">숨결 온스튜디오 소개</h3>
+              </div>
+              <button
+                onClick={() => setAboutLang(aboutLang === 'kr' ? 'en' : 'kr')}
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white hover:border-brand-purple/30 transition-colors"
+              >
+                {aboutLang === 'kr' ? 'Read in English' : '한국어로 보기'}
+              </button>
+            </div>
+
+            <div className="space-y-6 text-left">
+              {(aboutLang === 'kr' ? aboutKr : aboutEn).map((paragraph, index) => (
+                <p key={index} className="text-slate-400 leading-relaxed break-keep">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Services Section */}
         <section id="services" className="py-24 px-6 bg-white/[0.02] text-center">
           <div className="max-w-7xl mx-auto">
             <div className="mb-16">
               <h2 className="text-sm font-bold text-brand-accent uppercase tracking-widest mb-4">Our Services</h2>
-              <h3 className="text-3xl md:text-5xl font-bold tracking-tight break-keep">컨셉부터 마케팅까지,<br />디자인 l 브랜딩 l 마케팅</h3>
+              <h3 className="text-3xl md:text-5xl font-bold tracking-tight break-keep">기획부터 배포까지,<br />웹사이트 l 애플리케이션 l 유지보수</h3>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -414,144 +432,30 @@ export default function App() {
             <div className="flex flex-col items-center justify-center mb-16 gap-6">
               <div>
                 <h2 className="text-sm font-bold text-brand-accent uppercase tracking-widest mb-4">Portfolio</h2>
-                <h3 className="text-3xl md:text-5xl font-bold tracking-tight break-keep">성공을 디자인한 기록</h3>
+                <h3 className="text-3xl md:text-5xl font-bold tracking-tight break-keep">직접 기획하고 개발한 서비스들</h3>
               </div>
               <p className="text-slate-400 max-w-2xl mx-auto font-serif text-[15px] md:text-lg tracking-wide break-keep">
-                다양한 카테고리의 브랜드들과 함께하며 쌓아온 
-                숨결;온만의 감각적인 포트폴리오를 확인해보세요.
+                기획부터 개발, 배포와 운영까지 자체 인력으로 만들어온
+                숨결;온스튜디오의 서비스 개발 실적을 확인해보세요.
               </p>
             </div>
 
-            {/* Logo Design Category */}
-            <div className="mb-24">
-              <div className="flex items-center justify-center relative mb-10">
-                <div className="inline-flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-3 rounded-full bg-brand-purple/10 border border-brand-purple/20 text-brand-accent text-xl md:text-2xl font-bold">
-                  <Palette className="w-5 h-5 md:w-6 md:h-6" />
-                  <span>로고디자인</span>
-                </div>
-                <button 
-                  onClick={() => setSelectedCategory({ title: '로고디자인', items: portfolio.logoDesign })}
-                  className="absolute right-0 text-[13px] font-medium text-slate-400 hover:text-white transition-colors flex items-center gap-1"
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {portfolio.map((item) => (
+                <motion.div
+                  key={item.id}
+                  whileHover={{ y: -10 }}
+                  className="glass-card p-8 group hover:bg-white/10 transition-all flex flex-col items-center text-left"
                 >
-                  전체보기 <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {portfolio.logoDesign.map((item) => (
-                  <motion.div
-                    key={item.id}
-                    whileHover={{ y: -10 }}
-                    onClick={() => setSelectedItem(item)}
-                    className="flex flex-col items-center"
-                  >
-                    <div className="group relative aspect-video w-full overflow-hidden rounded-2xl cursor-pointer">
-                      <img 
-                        src={item.thumbnail || item.image} 
-                        alt={item.title}
-                        referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                    </div>
-                    <p className="mt-6 font-bold text-slate-400">{item.title}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* Detail Page Category */}
-            <div className="mb-24">
-              <div className="flex items-center justify-center relative mb-10">
-                <div className="inline-flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-3 rounded-full bg-brand-purple/10 border border-brand-purple/20 text-brand-accent text-xl md:text-2xl font-bold">
-                  <Layout className="w-5 h-5 md:w-6 md:h-6" />
-                  <span>상세페이지 제작</span>
-                </div>
-                <button 
-                  onClick={() => setSelectedCategory({ title: '상세페이지 제작', items: portfolio.detailPage })}
-                  className="absolute right-0 text-[13px] font-medium text-slate-400 hover:text-white transition-colors flex items-center gap-1"
-                >
-                  전체보기 <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto">
-                {portfolio.detailPage.map((item) => (
-                  <motion.div
-                    key={item.id}
-                    whileHover={{ y: -10 }}
-                    onClick={() => setSelectedItem(item)}
-                    className="flex flex-col items-center"
-                  >
-                    {/* Mobile Phone Frame */}
-                    <div className="relative w-full max-w-[280px] aspect-[9/19] bg-white/5 backdrop-blur-md rounded-[3rem] p-1 border-2 border-white/50 shadow-2xl shadow-brand-purple/5 overflow-hidden group cursor-pointer">
-                      {/* Screen Content */}
-                      <div className="relative w-full h-full rounded-[2.8rem] overflow-hidden bg-brand-deep">
-                        <div className="w-full flex flex-col transition-transform duration-700 group-hover:scale-110">
-                          {item.images ? (
-                            item.images.map((img, idx) => (
-                              <img 
-                                key={idx}
-                                src={img} 
-                                alt={`${item.title} ${idx + 1}`}
-                                referrerPolicy="no-referrer"
-                                className={cn(
-                                  "w-full h-auto block object-top",
-                                  idx === 0 ? item.thumbnailPosition : ""
-                                )}
-                              />
-                            ))
-                          ) : (
-                            <img 
-                              src={item.thumbnail || item.image} 
-                              alt={item.title}
-                              referrerPolicy="no-referrer"
-                              className={cn(
-                                "w-full h-auto block object-top",
-                                item.thumbnailPosition
-                              )}
-                            />
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                    <p className="mt-6 font-bold text-slate-400">{item.title}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* Branding & Marketing Category */}
-            <div>
-              <div className="flex items-center justify-center relative mb-10">
-                <div className="inline-flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-3 rounded-full bg-brand-purple/10 border border-brand-purple/20 text-brand-accent text-xl md:text-2xl font-bold">
-                  <Target className="w-5 h-5 md:w-6 md:h-6" />
-                  <span>브랜딩&마케팅</span>
-                </div>
-                <button 
-                  onClick={() => setSelectedCategory({ title: '브랜딩&마케팅', items: portfolio.brandingMarketing })}
-                  className="absolute right-0 text-[13px] font-medium text-slate-400 hover:text-white transition-colors flex items-center gap-1"
-                >
-                  전체보기 <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {portfolio.brandingMarketing.map((item) => (
-                  <motion.div
-                    key={item.id}
-                    whileHover={{ y: -10 }}
-                    onClick={() => setSelectedItem(item)}
-                    className="flex flex-col items-center"
-                  >
-                    <div className="group relative aspect-video w-full overflow-hidden rounded-2xl cursor-pointer">
-                      <img 
-                        src={item.thumbnail || item.image} 
-                        alt={item.title}
-                        referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                    </div>
-                    <p className="mt-6 font-bold text-slate-400">{item.title}</p>
-                  </motion.div>
-                ))}
-              </div>
+                  <div className="w-12 h-12 bg-brand-purple/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shrink-0">
+                    {item.icon}
+                  </div>
+                  <h4 className="text-xl font-bold mb-4 text-center">{item.title}</h4>
+                  <p className="text-slate-400 leading-relaxed break-keep">
+                    {item.description}
+                  </p>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
@@ -717,9 +621,9 @@ export default function App() {
                       )}
                     >
                       <option value="" className="bg-brand-deep">선택해주세요</option>
-                      <option value="logo" className="bg-brand-deep">로고 디자인</option>
-                      <option value="branding_marketing" className="bg-brand-deep">브랜딩&마케팅</option>
-                      <option value="detail_page" className="bg-brand-deep">상세페이지 제작</option>
+                      <option value="website" className="bg-brand-deep">웹사이트 제작</option>
+                      <option value="app" className="bg-brand-deep">애플리케이션 개발</option>
+                      <option value="maintenance" className="bg-brand-deep">유지보수·사무자동화</option>
                       <option value="other" className="bg-brand-deep">기타 문의</option>
                     </select>
                     {errors.serviceType && <p className="text-xs text-red-400">{errors.serviceType.message}</p>}
@@ -782,7 +686,7 @@ export default function App() {
           </div>
 
           <p className="text-slate-500 text-sm">
-            숨결;온스튜디오. 시각 디자인& 광고 대행 © 2026 All rights reserved.
+            숨결;온스튜디오. 웹사이트·앱 개발 전문기업 © 2026 All rights reserved.
           </p>
 
           <div className="flex gap-6">
@@ -792,170 +696,6 @@ export default function App() {
           </div>
         </div>
       </footer>
-
-      {/* Category Modal */}
-      <AnimatePresence>
-        {selectedCategory && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[90] flex items-center justify-center p-4 md:p-10"
-          >
-            {/* Backdrop */}
-            <div 
-              className="absolute inset-0 bg-brand-deep/95 backdrop-blur-xl"
-              onClick={() => setSelectedCategory(null)}
-            />
-            
-            {/* Modal Content */}
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="relative w-full max-w-6xl h-full bg-brand-deep rounded-3xl border border-white/10 overflow-hidden shadow-2xl flex flex-col"
-            >
-              {/* Header */}
-              <div className="flex items-center justify-between p-6 border-b border-white/5 bg-brand-deep/50 backdrop-blur-md z-10">
-                <div className="text-left">
-                  <h3 className="text-2xl font-bold">{selectedCategory.title} 전체보기</h3>
-                </div>
-                <button 
-                  onClick={() => setSelectedCategory(null)}
-                  className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 transition-colors"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-              </div>
-
-              {/* Scrollable Image Area */}
-              <div className="flex-1 overflow-y-auto custom-scrollbar p-6">
-                <div className={cn(
-                  "grid gap-6",
-                  selectedCategory.title === '상세페이지 제작' 
-                    ? "grid-cols-2 md:grid-cols-4" 
-                    : "grid-cols-2 md:grid-cols-4"
-                )}>
-                  {selectedCategory.items.map((item) => (
-                    <motion.div
-                      key={item.id}
-                      whileHover={{ y: -5 }}
-                      onClick={() => setSelectedItem(item)}
-                      className={cn(
-                        "group relative overflow-hidden cursor-pointer bg-white/5 flex flex-col items-center",
-                        item.category === "Detail Page" 
-                          ? "w-full aspect-[9/19] rounded-[2rem] p-1 border-2 border-white/20" 
-                          : "aspect-video md:aspect-square rounded-2xl"
-                      )}
-                    >
-                      <div className={cn(
-                        "relative w-full h-full overflow-hidden",
-                        item.category === "Detail Page" ? "rounded-[1.8rem]" : "rounded-2xl"
-                      )}>
-                        <div className="w-full h-full flex flex-col transition-transform duration-700 group-hover:scale-110">
-                          {item.images && item.category === "Detail Page" ? (
-                            item.images.map((img, idx) => (
-                              <img 
-                                key={idx}
-                                src={img} 
-                                alt={`${item.title} ${idx + 1}`}
-                                referrerPolicy="no-referrer"
-                                className={cn(
-                                  "w-full h-auto block object-top",
-                                  idx === 0 ? item.thumbnailPosition : ""
-                                )}
-                              />
-                            ))
-                          ) : (
-                            <img 
-                              src={item.thumbnail || item.image} 
-                              alt={item.title}
-                              referrerPolicy="no-referrer"
-                              className={cn(
-                                "block",
-                                item.category === "Detail Page" ? "w-full h-auto object-top" : "w-full h-full object-cover",
-                                item.category === "Detail Page" ? item.thumbnailPosition : ""
-                              )}
-                            />
-                          )}
-                        </div>
-                      </div>
-                      <p className={cn(
-                        "font-bold text-slate-400 text-center",
-                        item.category === "Detail Page" ? "mt-4 text-sm" : "mt-4 text-sm md:text-base"
-                      )}>
-                        {item.title}
-                      </p>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Portfolio Modal */}
-      <AnimatePresence>
-        {selectedItem && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-y-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] z-[100] flex items-center justify-center p-4 md:p-10"
-          >
-            {/* Backdrop */}
-            <div 
-              className="absolute inset-0 bg-brand-deep/95 backdrop-blur-xl"
-              onClick={() => setSelectedItem(null)}
-            />
-            
-            {/* Modal Content */}
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="relative w-full max-w-4xl h-full bg-brand-deep rounded-3xl border border-white/10 overflow-hidden shadow-2xl flex flex-col"
-            >
-              {/* Header */}
-              <div className="flex items-center justify-between p-6 border-b border-white/5 bg-brand-deep/50 backdrop-blur-md z-10">
-                <div className="text-left">
-                  <span className="text-xs font-bold text-brand-accent uppercase tracking-widest">{selectedItem.category}</span>
-                  <h3 className="text-xl font-bold">{selectedItem.title}</h3>
-                </div>
-                <button 
-                  onClick={() => setSelectedItem(null)}
-                  className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 transition-colors"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-              </div>
-
-              {/* Scrollable Image Area */}
-              <div className="flex-1 overflow-y-auto custom-scrollbar bg-black/20">
-                {selectedItem.images ? (
-                  selectedItem.images.map((img: string, idx: number) => (
-                    <img 
-                      key={idx}
-                      src={img} 
-                      alt={`${selectedItem.title} - ${idx + 1}`}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-auto block"
-                    />
-                  ))
-                ) : (
-                  <img 
-                    src={selectedItem.image} 
-                    alt={selectedItem.title}
-                    referrerPolicy="no-referrer"
-                    className="w-full h-auto block"
-                  />
-                )}
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* KakaoTalk Floating Button */}
       <a 
