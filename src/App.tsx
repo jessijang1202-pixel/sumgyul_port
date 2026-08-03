@@ -126,14 +126,14 @@ const content = {
     ],
     portfolioEyebrow: "Portfolio",
     portfolioTitle: "직접 기획하고 개발한 서비스들",
-    portfolioSub: "기획부터 개발, 배포와 운영까지 자체 인력으로 만들어온 숨결;온스튜디오의 서비스 개발 실적입니다. (이미지는 준비 중입니다)",
+    portfolioSub: "기획부터 개발, 배포와 운영까지 자체 인력으로 만들어온 숨결;온스튜디오의 서비스 개발 실적입니다.",
     portfolio: [
-      { industry: "SaaS Platform", title: "로컬루프 코리아 (Localoop Korea)", description: "국내 거주 외국인을 위한 AI 기반 생활 적응 SaaS 플랫폼. 장소·음식·모임·사람 4대 축으로 회원 매칭·다국어 번역·지역 추천 제공, 특허 3건 출원." },
-      { industry: "AI SaaS", title: "크리스피카피 (CrispyCopy)", description: "AI가 브랜드를 학습해 네이버 블로그·인스타그램·카카오톡·당근·스레드·틱톡 6개 채널용 SNS 콘텐츠를 자동 작성하는 SaaS. 특허 3건 출원." },
-      { industry: "Mobile App", title: "스냅릴 (SnapReel)", description: "숏폼 영상 자동 생성 앱. 단순 자동생성 모드와 사용자 승인 절차 포함 10단계 고급 모드로 구성." },
-      { industry: "Community App", title: "평택광장", description: "지역 정당 당원(약 13명)을 위한 정보공유 앱. 현수막 지도, 행사 일정, 자원봉사 지도, Gemini API 기반 일일 인사말 카드 기능 포함." },
-      { industry: "Productivity App", title: "솔로플로우 (SoloFlow)", description: "개인의 주간·일간 목표를 설정하고 실행을 관리하는 목표 관리 앱." },
-      { industry: "Media Platform", title: "바이칼뉴스 (Baikal News)", description: "인터넷신문사의 뉴스 콘텐츠 제작·게재용 온라인 플랫폼 구축·운영에 개발 인력으로 참여." },
+      { industry: "SaaS Platform", title: "로컬루프 코리아 (Localoop Korea)", description: "국내 거주 외국인을 위한 AI 기반 생활 적응 SaaS 플랫폼. 장소·음식·모임·사람 4대 축으로 회원 매칭·다국어 번역·지역 추천 제공, 특허 3건 출원.", image: "/p_localoop.png" },
+      { industry: "AI SaaS", title: "크리스피카피 (CrispyCopy)", description: "AI가 브랜드를 학습해 네이버 블로그·인스타그램·카카오톡·당근·스레드·틱톡 6개 채널용 SNS 콘텐츠를 자동 작성하는 SaaS. 특허 3건 출원.", image: undefined as string | undefined },
+      { industry: "Mobile App", title: "스냅릴 (SnapReel)", description: "숏폼 영상 자동 생성 앱. 단순 자동생성 모드와 사용자 승인 절차 포함 10단계 고급 모드로 구성.", image: "/p_snapreel.png" },
+      { industry: "Community App", title: "평택광장", description: "지역 정당 당원(약 13명)을 위한 정보공유 앱. 현수막 지도, 행사 일정, 자원봉사 지도, Gemini API 기반 일일 인사말 카드 기능 포함.", image: undefined as string | undefined },
+      { industry: "Productivity App", title: "솔로플로우 (SoloFlow)", description: "개인의 주간·일간 목표를 설정하고 실행을 관리하는 목표 관리 앱.", image: undefined as string | undefined },
+      { industry: "Media Platform", title: "바이칼뉴스 (Baikal News)", description: "인터넷신문사의 뉴스 콘텐츠 제작·게재용 온라인 플랫폼 구축·운영에 개발 인력으로 참여.", image: "/p_baikalnews.png" },
     ],
     portfolioImageCaption: "프로젝트 사진 준비 중",
     pricingEyebrow: "Pricing",
@@ -228,14 +228,14 @@ const content = {
     ],
     portfolioEyebrow: "Portfolio",
     portfolioTitle: "Services We've Built In-House",
-    portfolioSub: "See how Sumgyeol On Studio has planned, built, deployed, and operated its own services entirely in-house. (Images coming soon.)",
+    portfolioSub: "See how Sumgyeol On Studio has planned, built, deployed, and operated its own services entirely in-house.",
     portfolio: [
-      { industry: "SaaS Platform", title: "Localoop Korea", description: "An AI-powered life-adaptation SaaS platform for foreign residents in Korea. Matches members and recommends places, food, meetups, and people through AI, with multilingual translation and local recommendations. Three patents filed." },
-      { industry: "AI SaaS", title: "CrispyCopy", description: "An AI SaaS that learns a brand's voice to auto-write SNS content for six channels — Naver Blog, Instagram, KakaoTalk, Danggeun, Threads, and TikTok. Three patents filed." },
-      { industry: "Mobile App", title: "SnapReel", description: "A short-form video auto-generation app, offering both a simple auto-generate mode and a 10-step advanced mode with user approval steps." },
-      { industry: "Community App", title: "Pyeongtaek Plaza", description: "An information-sharing app for around 13 members of a local political party, featuring a banner map, event schedule, volunteer map, and Gemini API-based daily greeting cards." },
-      { industry: "Productivity App", title: "SoloFlow", description: "A goal-management app for setting and tracking personal weekly and daily goals." },
-      { industry: "Media Platform", title: "Baikal News", description: "Joined as a developer to build and operate the online platform for an internet newspaper's news content production and publishing." },
+      { industry: "SaaS Platform", title: "Localoop Korea", description: "An AI-powered life-adaptation SaaS platform for foreign residents in Korea. Matches members and recommends places, food, meetups, and people through AI, with multilingual translation and local recommendations. Three patents filed.", image: "/p_localoop.png" },
+      { industry: "AI SaaS", title: "CrispyCopy", description: "An AI SaaS that learns a brand's voice to auto-write SNS content for six channels — Naver Blog, Instagram, KakaoTalk, Danggeun, Threads, and TikTok. Three patents filed.", image: undefined as string | undefined },
+      { industry: "Mobile App", title: "SnapReel", description: "A short-form video auto-generation app, offering both a simple auto-generate mode and a 10-step advanced mode with user approval steps.", image: "/p_snapreel.png" },
+      { industry: "Community App", title: "Pyeongtaek Plaza", description: "An information-sharing app for around 13 members of a local political party, featuring a banner map, event schedule, volunteer map, and Gemini API-based daily greeting cards.", image: undefined as string | undefined },
+      { industry: "Productivity App", title: "SoloFlow", description: "A goal-management app for setting and tracking personal weekly and daily goals.", image: undefined as string | undefined },
+      { industry: "Media Platform", title: "Baikal News", description: "Joined as a developer to build and operate the online platform for an internet newspaper's news content production and publishing.", image: "/p_baikalnews.png" },
     ],
     portfolioImageCaption: "Project photo coming soon",
     pricingEyebrow: "Pricing",
@@ -583,7 +583,11 @@ export default function App() {
                   whileHover={{ y: -6 }}
                   className="glass-card overflow-hidden"
                 >
-                  <ImagePlaceholder ratio="aspect-[4/3]" caption={t.portfolioImageCaption} className="w-full !border-0 !border-b !border-[var(--border-soft)] rounded-none" />
+                  {item.image ? (
+                    <img src={item.image} alt={item.title} className="w-full aspect-[4/3] object-cover object-top" />
+                  ) : (
+                    <ImagePlaceholder ratio="aspect-[4/3]" caption={t.portfolioImageCaption} className="w-full !border-0 !border-b !border-[var(--border-soft)] rounded-none" />
+                  )}
                   <div className="p-5">
                     <span className="inline-block px-3 py-1 rounded-full bg-brand-tag-bg text-brand-tag-text text-[11px] font-bold mb-2.5">
                       {item.industry}
