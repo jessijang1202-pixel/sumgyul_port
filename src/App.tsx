@@ -519,7 +519,7 @@ export default function App() {
               <h3 className="text-3xl md:text-5xl font-bold tracking-tight break-keep">{t.aboutTitle}</h3>
             </div>
 
-            <div className="space-y-6 text-left">
+            <div className="space-y-6 text-center">
               {t.about.map((paragraph, index) => (
                 <p key={index} className="text-[var(--text-muted)] leading-relaxed break-keep">
                   {paragraph}
