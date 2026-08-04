@@ -124,6 +124,16 @@ const content = {
       { industry: "Media Platform", title: "바이칼뉴스 (Baikal News)", description: "인터넷신문사의 뉴스 콘텐츠 제작·게재용 온라인 플랫폼 구축하고 개인별 기사 작성 도우미로서의 AI를 학습시켜 기사작성 시간을 단축시켜주는 AI 집필실 구축.", image: "/p_baikalnews.png" },
     ],
     portfolioImageCaption: "프로젝트 사진 준비 중",
+    workflowEyebrow: "Process",
+    workflowTitle: "아이디어가 이렇게 실현됩니다",
+    workflowSub: "상담부터 운영까지, 숨결;온스튜디오와 함께하는 프로젝트 진행 과정입니다.",
+    workflowSteps: [
+      { step: "01", title: "상담 & 기획", description: "요구사항과 목표를 함께 정리하고, 서비스의 방향과 범위를 구체화합니다." },
+      { step: "02", title: "설계", description: "화면 구조와 데이터 흐름을 설계해 개발 방향을 명확히 합니다." },
+      { step: "03", title: "개발", description: "Next.js 기반으로 기획된 내용을 실제로 동작하는 웹·앱으로 구현합니다." },
+      { step: "04", title: "배포", description: "실제 서비스 환경에 배포하고 정상 동작을 꼼꼼히 확인합니다." },
+      { step: "05", title: "운영 & 유지보수", description: "오픈 이후에도 지속적으로 운영하고 필요한 기능을 개선해나갑니다." },
+    ],
     pricingEyebrow: "Pricing",
     pricingTitle: <>합리적인 비용으로 시작하는<br />압도적인 퀄리티</>,
     pricingSub: "당신의 비즈니스 규모와 필요에 맞는 최적의 플랜을 제안합니다.",
@@ -226,6 +236,16 @@ const content = {
       { industry: "Media Platform", title: "Baikal News", description: "Built the online platform for an internet newspaper's news content production and publishing, and developed an AI writing studio that trains a personal article-writing assistant to cut down article-writing time.", image: "/p_baikalnews.png" },
     ],
     portfolioImageCaption: "Project photo coming soon",
+    workflowEyebrow: "Process",
+    workflowTitle: "How Your Idea Comes to Life",
+    workflowSub: "From consultation to operations — here's how a project unfolds with Sumgyeol On Studio.",
+    workflowSteps: [
+      { step: "01", title: "Consultation & Planning", description: "We gather your requirements and goals together, and define the service's direction and scope." },
+      { step: "02", title: "Design", description: "We design the screen structure and data flow to make the development direction clear." },
+      { step: "03", title: "Development", description: "We build what was planned into a real, working web or app using Next.js." },
+      { step: "04", title: "Deployment", description: "We deploy to a live environment and carefully verify everything works as expected." },
+      { step: "05", title: "Operations & Maintenance", description: "We keep operating and improving the service after launch." },
+    ],
     pricingEyebrow: "Pricing",
     pricingTitle: <>Exceptional Quality,<br />Starting at a Fair Price</>,
     pricingSub: "We recommend the plan that best fits your business size and needs.",
@@ -574,6 +594,32 @@ export default function App() {
                     </p>
                   </div>
                 </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Workflow Section */}
+        <section id="workflow" className="py-20 md:py-[88px] px-6 bg-[var(--surface-alt)] text-center">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-xs font-bold uppercase tracking-[0.12em] text-brand-blue mb-3">{t.workflowEyebrow}</div>
+            <h2 className="text-2xl md:text-[32px] font-extrabold mb-2 tracking-tight break-keep">{t.workflowTitle}</h2>
+            <p className="text-[var(--text-muted)] mb-14 break-keep">{t.workflowSub}</p>
+
+            <div className="grid md:grid-cols-5 gap-8 md:gap-4 text-left">
+              {t.workflowSteps.map((item, index) => (
+                <div key={index} className="relative">
+                  <div className="flex items-center gap-3 md:block">
+                    <div className="text-2xl font-extrabold text-brand-blue/30 md:mb-3">{item.step}</div>
+                    <h4 className="text-base font-bold">{item.title}</h4>
+                  </div>
+                  <p className="text-[var(--text-muted)] text-sm leading-relaxed mt-2">
+                    {item.description}
+                  </p>
+                  {index < t.workflowSteps.length - 1 && (
+                    <div className="hidden md:block absolute top-3 left-full w-4 h-px bg-[var(--border-soft)]" />
+                  )}
+                </div>
               ))}
             </div>
           </div>
