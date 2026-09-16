@@ -20,7 +20,6 @@ import {
   Image as ImageIcon,
   Palette,
   Layout,
-  Target,
   ChevronRight
 } from 'lucide-react';
 import { useForm } from 'react-hook-form';
@@ -131,7 +130,7 @@ const content = {
     designPortfolioEyebrow: "Design Portfolio",
     designPortfolioTitle: "브랜드에 숨결을 불어넣은 디자인 작업들",
     designPortfolioSub: "로고 디자인부터 브랜딩·마케팅, 상세페이지 제작까지 다양한 브랜드와 함께해온 숨결;온스튜디오의 디자인 포트폴리오입니다.",
-    designCategories: { logo: "로고디자인", detail: "상세페이지 제작", branding: "브랜딩&마케팅" },
+    designCategories: { logo: "로고디자인", detail: "상세페이지 제작" },
     viewAllLabel: "전체보기",
     workflowEyebrow: "Process",
     workflowTitle: "아이디어가 이렇게 실현됩니다",
@@ -248,7 +247,7 @@ const content = {
     designPortfolioEyebrow: "Design Portfolio",
     designPortfolioTitle: "Design Work That Gave Brands Their Voice",
     designPortfolioSub: "From logo design to branding, marketing, and detail-page production — our design portfolio built alongside a wide range of brands.",
-    designCategories: { logo: "Logo Design", detail: "Detail Page", branding: "Branding & Marketing" },
+    designCategories: { logo: "Logo Design", detail: "Detail Page" },
     viewAllLabel: "View All",
     workflowEyebrow: "Process",
     workflowTitle: "How Your Idea Comes to Life",
@@ -330,8 +329,6 @@ const designPortfolio = {
     { id: 'l2', titleKr: "힙하고 트렌디한 업사이클링 브랜드 - RERE", titleEn: "RERE — Upcycling Fashion Brand", thumbnail: "/sum_logo2.png", image: "/rere.png" },
     { id: 'l3', titleKr: "Tech 스타트업 싱크노트 SyncNote", titleEn: "SyncNote — Tech Startup Logo", thumbnail: "/sum_logo3.png", image: "/sync.png" },
     { id: 'l4', titleKr: "정갈한 가정식 반상 또는 모던 솥밥 전문점 - 다온 반상", titleEn: "Daon Bansang — Modern Hotpot Rice Restaurant", thumbnail: "/sum_logo4.png", image: "/daon.png" },
-  ],
-  brandingMarketing: [
     { id: 'b1', titleKr: "빈티지 탐험 스탬프 - 트래커스 블렌드", titleEn: "Trackers Blend — Vintage Exploration Branding", thumbnail: "/sum_trackers.png", image: "/portfolio_trackers.png" },
     { id: 'b2', titleKr: "지속가능한 슬로우 패션 - 리포즈(RE:PAUSE)", titleEn: "RE:PAUSE — Sustainable Slow Fashion", thumbnail: "/logo_lepause.png", image: "/portfolio_lepause.png" },
   ],
@@ -670,7 +667,7 @@ export default function App() {
                   {t.viewAllLabel} <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
                 {designPortfolio.logoDesign.map((item) => (
                   <motion.div
                     key={item.id}
@@ -693,7 +690,7 @@ export default function App() {
             </div>
 
             {/* Detail Page Category */}
-            <div className="mb-20">
+            <div>
               <div className="flex items-center justify-center relative mb-10">
                 <div className="inline-flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-3 rounded-full bg-brand-tag-bg text-brand-tag-text text-lg md:text-xl font-bold">
                   <Layout className="w-5 h-5" />
@@ -739,42 +736,6 @@ export default function App() {
                       </div>
                     </div>
                     <p className="mt-5 text-sm font-bold text-[var(--text-secondary)] text-center">{lang === 'kr' ? item.titleKr : item.titleEn}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* Branding & Marketing Category */}
-            <div>
-              <div className="flex items-center justify-center relative mb-10">
-                <div className="inline-flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-3 rounded-full bg-brand-tag-bg text-brand-tag-text text-lg md:text-xl font-bold">
-                  <Target className="w-5 h-5" />
-                  <span>{t.designCategories.branding}</span>
-                </div>
-                <button
-                  onClick={() => setSelectedDesignCategory({ title: t.designCategories.branding, items: designPortfolio.brandingMarketing })}
-                  className="absolute right-0 text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors flex items-center gap-1"
-                >
-                  {t.viewAllLabel} <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
-                {designPortfolio.brandingMarketing.map((item) => (
-                  <motion.div
-                    key={item.id}
-                    whileHover={{ y: -6 }}
-                    onClick={() => setSelectedDesignItem(item)}
-                    className="glass-card overflow-hidden cursor-pointer text-left"
-                  >
-                    <img
-                      src={item.thumbnail || item.image}
-                      alt={lang === 'kr' ? item.titleKr : item.titleEn}
-                      referrerPolicy="no-referrer"
-                      className="w-full aspect-video object-cover"
-                    />
-                    <div className="p-5">
-                      <p className="font-bold text-[15px]">{lang === 'kr' ? item.titleKr : item.titleEn}</p>
-                    </div>
                   </motion.div>
                 ))}
               </div>
