@@ -17,7 +17,11 @@ import {
   Menu,
   X,
   Sparkles,
-  Image as ImageIcon
+  Image as ImageIcon,
+  Palette,
+  Layout,
+  Target,
+  ChevronRight
 } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -124,6 +128,11 @@ const content = {
       { industry: "Media Platform", title: "바이칼뉴스 (Baikal News)", description: "인터넷신문사의 뉴스 콘텐츠 제작·게재용 온라인 플랫폼 구축하고 개인별 기사 작성 도우미로서의 AI를 학습시켜 기사작성 시간을 단축시켜주는 AI 집필실 구축.", image: "/p_baikalnews.png" },
     ],
     portfolioImageCaption: "프로젝트 사진 준비 중",
+    designPortfolioEyebrow: "Design Portfolio",
+    designPortfolioTitle: "브랜드에 숨결을 불어넣은 디자인 작업들",
+    designPortfolioSub: "로고 디자인부터 브랜딩·마케팅, 상세페이지 제작까지 다양한 브랜드와 함께해온 숨결;온스튜디오의 디자인 포트폴리오입니다.",
+    designCategories: { logo: "로고디자인", detail: "상세페이지 제작", branding: "브랜딩&마케팅" },
+    viewAllLabel: "전체보기",
     workflowEyebrow: "Process",
     workflowTitle: "아이디어가 이렇게 실현됩니다",
     workflowSub: "상담부터 운영까지, 숨결;온스튜디오와 함께하는 프로젝트 진행 과정입니다.",
@@ -236,6 +245,11 @@ const content = {
       { industry: "Media Platform", title: "Baikal News", description: "Built the online platform for an internet newspaper's news content production and publishing, and developed an AI writing studio that trains a personal article-writing assistant to cut down article-writing time.", image: "/p_baikalnews.png" },
     ],
     portfolioImageCaption: "Project photo coming soon",
+    designPortfolioEyebrow: "Design Portfolio",
+    designPortfolioTitle: "Design Work That Gave Brands Their Voice",
+    designPortfolioSub: "From logo design to branding, marketing, and detail-page production — our design portfolio built alongside a wide range of brands.",
+    designCategories: { logo: "Logo Design", detail: "Detail Page", branding: "Branding & Marketing" },
+    viewAllLabel: "View All",
     workflowEyebrow: "Process",
     workflowTitle: "How Your Idea Comes to Life",
     workflowSub: "From consultation to operations — here's how a project unfolds with Sumgyeol On Studio.",
@@ -310,6 +324,27 @@ const content = {
   },
 } as const;
 
+const designPortfolio = {
+  logoDesign: [
+    { id: 'l1', titleKr: "까페 Brew Moment 로고 이미지와 간판", titleEn: "Brew Moment Café — Logo & Signage", thumbnail: "/sum_logo1.png", image: "/brewmoment.png" },
+    { id: 'l2', titleKr: "힙하고 트렌디한 업사이클링 브랜드 - RERE", titleEn: "RERE — Upcycling Fashion Brand", thumbnail: "/sum_logo2.png", image: "/rere.png" },
+    { id: 'l3', titleKr: "Tech 스타트업 싱크노트 SyncNote", titleEn: "SyncNote — Tech Startup Logo", thumbnail: "/sum_logo3.png", image: "/sync.png" },
+    { id: 'l4', titleKr: "정갈한 가정식 반상 또는 모던 솥밥 전문점 - 다온 반상", titleEn: "Daon Bansang — Modern Hotpot Rice Restaurant", thumbnail: "/sum_logo4.png", image: "/daon.png" },
+  ],
+  brandingMarketing: [
+    { id: 'b1', titleKr: "빈티지 탐험 스탬프 - 트래커스 블렌드", titleEn: "Trackers Blend — Vintage Exploration Branding", thumbnail: "/sum_trackers.png", image: "/portfolio_trackers.png" },
+    { id: 'b2', titleKr: "지속가능한 슬로우 패션 - 리포즈(RE:PAUSE)", titleEn: "RE:PAUSE — Sustainable Slow Fashion", thumbnail: "/logo_lepause.png", image: "/portfolio_lepause.png" },
+  ],
+  detailPage: [
+    { id: 'd1', titleKr: "프리미엄 한국 전통주 또록", titleEn: "Ttorok — Premium Korean Traditional Liquor", thumbnail: "/page_6-2.gif", image: "/ttorok.png", images: ["/page_6-2.gif", "/ttorok.png"], thumbnailPosition: "object-top" },
+    { id: 'd5', titleKr: "가장 따뜻한 위로, 다온의 정성, 채끝 트러플 솥밥", titleEn: "Daon — Truffle Striploin Hotpot Rice", thumbnail: "/sobtbob_move.gif", image: "/sotbob.png", images: ["/sobtbob_move.gif", "/sotbob.png"], thumbnailPosition: "object-top" },
+    { id: 'd6', titleKr: "바다의 깊은 온기를 담다, 전복 내장 (게우) 솥밥", titleEn: "Abalone Intestine Hotpot Rice", thumbnail: "/jonbok_move.gif", image: "/jonbok.png", images: ["/jonbok_move.gif", "/jonbok.png"], thumbnailPosition: "object-top" },
+    { id: 'd3', titleKr: "3,650일 단 하나의 향, 트래커스 블렌드", titleEn: "Trackers Blend — Detail Page", thumbnail: "/treckers_move1.gif", image: "/portfolio_trackersblend.png", images: ["/treckers_move1.gif", "/portfolio_trackersblend.png"] },
+    { id: 'd4', titleKr: "가장 완벽한 온도와 균형을 유지하는 zeln 젤른 텀블러", titleEn: "Zeln Tumbler — Perfect Temperature Balance", thumbnail: "/zeln_move.gif", image: "/zeln.png", images: ["/zeln_move.gif", "/zeln.png"], thumbnailPosition: "object-top" },
+    { id: 'd2', titleKr: "필드위 그녀의 매끈한 다리의 비밀 벨벳블리즈", titleEn: "Velvet Breeze — Golf Leg Care", thumbnail: "/velvet1.png", image: "/velvet1.png", thumbnailPosition: "object-[center_1%]" },
+  ]
+};
+
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -317,8 +352,21 @@ export default function App() {
   const [errorMessage, setErrorMessage] = useState('');
   const [currentPricingIndex, setCurrentPricingIndex] = useState(0);
   const [lang, setLang] = useState<Lang>(() => (localStorage.getItem('sumgyul-lang') as Lang) || 'kr');
+  const [selectedDesignItem, setSelectedDesignItem] = useState<any | null>(null);
+  const [selectedDesignCategory, setSelectedDesignCategory] = useState<{ title: string; items: any[] } | null>(null);
 
   const t = content[lang];
+
+  React.useEffect(() => {
+    if (selectedDesignItem || selectedDesignCategory) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedDesignItem, selectedDesignCategory]);
 
   const toggleLang = () => {
     const next: Lang = lang === 'kr' ? 'en' : 'kr';
@@ -599,6 +647,141 @@ export default function App() {
           </div>
         </section>
 
+        {/* Design Portfolio Section */}
+        <section id="design-portfolio" className="py-20 md:py-[88px] px-6 bg-[var(--surface-alt)] text-center">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-xs font-bold uppercase tracking-[0.12em] text-brand-blue mb-3">{t.designPortfolioEyebrow}</div>
+            <h2 className="text-2xl md:text-[32px] font-extrabold mb-2 max-w-[22ch] mx-auto tracking-tight break-keep">{t.designPortfolioTitle}</h2>
+            <p className="text-[var(--text-muted)] max-w-2xl mx-auto mb-14 break-keep">
+              {t.designPortfolioSub}
+            </p>
+
+            {/* Logo Design Category */}
+            <div className="mb-20">
+              <div className="flex items-center justify-center relative mb-10">
+                <div className="inline-flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-3 rounded-full bg-brand-tag-bg text-brand-tag-text text-lg md:text-xl font-bold">
+                  <Palette className="w-5 h-5" />
+                  <span>{t.designCategories.logo}</span>
+                </div>
+                <button
+                  onClick={() => setSelectedDesignCategory({ title: t.designCategories.logo, items: designPortfolio.logoDesign })}
+                  className="absolute right-0 text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors flex items-center gap-1"
+                >
+                  {t.viewAllLabel} <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+                {designPortfolio.logoDesign.map((item) => (
+                  <motion.div
+                    key={item.id}
+                    whileHover={{ y: -6 }}
+                    onClick={() => setSelectedDesignItem(item)}
+                    className="glass-card overflow-hidden cursor-pointer text-left"
+                  >
+                    <img
+                      src={item.thumbnail || item.image}
+                      alt={lang === 'kr' ? item.titleKr : item.titleEn}
+                      referrerPolicy="no-referrer"
+                      className="w-full aspect-video object-cover"
+                    />
+                    <div className="p-5">
+                      <p className="font-bold text-[15px]">{lang === 'kr' ? item.titleKr : item.titleEn}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Detail Page Category */}
+            <div className="mb-20">
+              <div className="flex items-center justify-center relative mb-10">
+                <div className="inline-flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-3 rounded-full bg-brand-tag-bg text-brand-tag-text text-lg md:text-xl font-bold">
+                  <Layout className="w-5 h-5" />
+                  <span>{t.designCategories.detail}</span>
+                </div>
+                <button
+                  onClick={() => setSelectedDesignCategory({ title: t.designCategories.detail, items: designPortfolio.detailPage })}
+                  className="absolute right-0 text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors flex items-center gap-1"
+                >
+                  {t.viewAllLabel} <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-4xl mx-auto">
+                {designPortfolio.detailPage.map((item) => (
+                  <motion.div
+                    key={item.id}
+                    whileHover={{ y: -6 }}
+                    onClick={() => setSelectedDesignItem(item)}
+                    className="flex flex-col items-center cursor-pointer"
+                  >
+                    <div className="relative w-full max-w-[220px] aspect-[9/19] bg-[var(--surface)] rounded-[2.5rem] p-1.5 border-2 border-[var(--border-soft)] shadow-lg overflow-hidden group">
+                      <div className="relative w-full h-full rounded-[2rem] overflow-hidden bg-[var(--surface-alt)]">
+                        <div className="w-full flex flex-col">
+                          {item.images ? (
+                            item.images.map((img, idx) => (
+                              <img
+                                key={idx}
+                                src={img}
+                                alt={`${lang === 'kr' ? item.titleKr : item.titleEn} ${idx + 1}`}
+                                referrerPolicy="no-referrer"
+                                className={cn("w-full h-auto block", idx === 0 ? item.thumbnailPosition : "")}
+                              />
+                            ))
+                          ) : (
+                            <img
+                              src={item.thumbnail || item.image}
+                              alt={lang === 'kr' ? item.titleKr : item.titleEn}
+                              referrerPolicy="no-referrer"
+                              className={cn("w-full h-auto block", item.thumbnailPosition)}
+                            />
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    <p className="mt-5 text-sm font-bold text-[var(--text-secondary)] text-center">{lang === 'kr' ? item.titleKr : item.titleEn}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Branding & Marketing Category */}
+            <div>
+              <div className="flex items-center justify-center relative mb-10">
+                <div className="inline-flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-3 rounded-full bg-brand-tag-bg text-brand-tag-text text-lg md:text-xl font-bold">
+                  <Target className="w-5 h-5" />
+                  <span>{t.designCategories.branding}</span>
+                </div>
+                <button
+                  onClick={() => setSelectedDesignCategory({ title: t.designCategories.branding, items: designPortfolio.brandingMarketing })}
+                  className="absolute right-0 text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors flex items-center gap-1"
+                >
+                  {t.viewAllLabel} <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+                {designPortfolio.brandingMarketing.map((item) => (
+                  <motion.div
+                    key={item.id}
+                    whileHover={{ y: -6 }}
+                    onClick={() => setSelectedDesignItem(item)}
+                    className="glass-card overflow-hidden cursor-pointer text-left"
+                  >
+                    <img
+                      src={item.thumbnail || item.image}
+                      alt={lang === 'kr' ? item.titleKr : item.titleEn}
+                      referrerPolicy="no-referrer"
+                      className="w-full aspect-video object-cover"
+                    />
+                    <div className="p-5">
+                      <p className="font-bold text-[15px]">{lang === 'kr' ? item.titleKr : item.titleEn}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Workflow Section */}
         <section id="workflow" className="py-20 md:py-[88px] px-6 bg-[var(--surface-alt)] text-center">
           <div className="max-w-7xl mx-auto">
@@ -850,23 +1033,124 @@ export default function App() {
         </div>
       </footer>
 
-      {/* KakaoTalk Floating Button — temporarily hidden, restore by removing `false &&` */}
-      {false && (
-        <a
-          href="http://pf.kakao.com/_QxcxauX"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#FEE500] text-[#000000] px-5 py-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 group"
-        >
-          <div className="flex flex-col text-right">
-            <span className="text-[10px] font-bold opacity-70">숨결 온스튜디오</span>
-            <span className="text-sm font-extrabold">{t.kakaoCta}</span>
-          </div>
-          <svg viewBox="0 0 32 32" className="w-6 h-6" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16 4.64c-6.96 0-12.64 4.48-12.64 10.08 0 3.52 2.32 6.64 5.76 8.48l-1.44 5.44c-.16.48.32.8.72.56l6.4-4.32c.4.08.8.08 1.2.08 6.96 0 12.64-4.48 12.64-10.08S22.96 4.64 16 4.64z" fill="#000000"/>
-          </svg>
-        </a>
-      )}
+      {/* Design Category Modal */}
+      <AnimatePresence>
+        {selectedDesignCategory && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[90] flex items-center justify-center p-4 md:p-10"
+          >
+            <div
+              className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+              onClick={() => setSelectedDesignCategory(null)}
+            />
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="relative w-full max-w-6xl h-full bg-[var(--surface)] rounded-3xl border border-[var(--border-soft)] overflow-hidden shadow-2xl flex flex-col"
+            >
+              <div className="flex items-center justify-between p-6 border-b border-[var(--border-soft)] z-10">
+                <h3 className="text-xl font-bold text-left">{selectedDesignCategory.title}</h3>
+                <button
+                  onClick={() => setSelectedDesignCategory(null)}
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--surface-alt)] hover:bg-[var(--border-soft)] transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+              <div className="flex-1 overflow-y-auto p-6">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                  {selectedDesignCategory.items.map((item: any) => (
+                    <motion.div
+                      key={item.id}
+                      whileHover={{ y: -5 }}
+                      onClick={() => setSelectedDesignItem(item)}
+                      className={cn(
+                        "group relative overflow-hidden cursor-pointer bg-[var(--surface-alt)] flex flex-col items-center",
+                        item.images ? "w-full aspect-[9/19] rounded-[2rem] p-1 border-2 border-[var(--border-soft)]" : "aspect-square rounded-2xl"
+                      )}
+                    >
+                      <div className={cn("relative w-full h-full overflow-hidden", item.images ? "rounded-[1.7rem]" : "rounded-2xl")}>
+                        {item.images ? (
+                          item.images.map((img: string, idx: number) => (
+                            <img key={idx} src={img} alt="" referrerPolicy="no-referrer" className={cn("w-full h-auto block", idx === 0 ? item.thumbnailPosition : "")} />
+                          ))
+                        ) : (
+                          <img src={item.thumbnail || item.image} alt="" referrerPolicy="no-referrer" className="w-full h-full object-cover block" />
+                        )}
+                      </div>
+                      <p className="mt-3 text-xs font-bold text-[var(--text-secondary)] text-center px-2 pb-2">
+                        {lang === 'kr' ? item.titleKr : item.titleEn}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Design Item Modal */}
+      <AnimatePresence>
+        {selectedDesignItem && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-y-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] z-[100] flex items-center justify-center p-4 md:p-10"
+          >
+            <div
+              className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+              onClick={() => setSelectedDesignItem(null)}
+            />
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="relative w-full max-w-3xl h-full bg-[var(--surface)] rounded-3xl border border-[var(--border-soft)] overflow-hidden shadow-2xl flex flex-col"
+            >
+              <div className="flex items-center justify-between p-6 border-b border-[var(--border-soft)] z-10">
+                <h3 className="text-lg font-bold text-left">{lang === 'kr' ? selectedDesignItem.titleKr : selectedDesignItem.titleEn}</h3>
+                <button
+                  onClick={() => setSelectedDesignItem(null)}
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--surface-alt)] hover:bg-[var(--border-soft)] transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+              <div className="flex-1 overflow-y-auto bg-[var(--surface-alt)]">
+                {selectedDesignItem.images ? (
+                  selectedDesignItem.images.map((img: string, idx: number) => (
+                    <img key={idx} src={img} alt="" referrerPolicy="no-referrer" className="w-full h-auto block" />
+                  ))
+                ) : (
+                  <img src={selectedDesignItem.image} alt="" referrerPolicy="no-referrer" className="w-full h-auto block" />
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* KakaoTalk Floating Button */}
+      <a
+        href="http://pf.kakao.com/_QxcxauX"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#FEE500] text-[#000000] px-5 py-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 group"
+      >
+        <div className="flex flex-col text-right">
+          <span className="text-[10px] font-bold opacity-70">숨결 온스튜디오</span>
+          <span className="text-sm font-extrabold">{t.kakaoCta}</span>
+        </div>
+        <svg viewBox="0 0 32 32" className="w-6 h-6" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 4.64c-6.96 0-12.64 4.48-12.64 10.08 0 3.52 2.32 6.64 5.76 8.48l-1.44 5.44c-.16.48.32.8.72.56l6.4-4.32c.4.08.8.08 1.2.08 6.96 0 12.64-4.48 12.64-10.08S22.96 4.64 16 4.64z" fill="#000000"/>
+        </svg>
+      </a>
     </div>
   );
 }
